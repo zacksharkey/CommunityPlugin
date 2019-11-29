@@ -15,13 +15,10 @@ namespace CommunityPlugin.Objects
 
         public static bool CheckAccess(string pluginName, bool menu = false, bool loan = false)
         {
-            if (!EncompassHelper.User.ID.Equals("zsharkey"))
-                return false;
-
             if (EncompassHelper.IsTest() || CDOHelper.CDO.CommunitySettings.SuperAdminRun)
                 return true;
 
-            PluginAccessRight right = Rights.Where(x => x.PluginName.Equals(pluginName)).FirstOrDefault();// !menu ? Rights.Where(x => x.PluginName.Equals(pluginName)).FirstOrDefault() : LoanRights.Where(x => x.PluginName.Equals(pluginName)).FirstOrDefault();
+            PluginAccessRight right = Rights.Where(x => x.PluginName.Equals(pluginName)).FirstOrDefault();
             if (right == null)
                 return false;
 
