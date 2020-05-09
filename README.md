@@ -7,7 +7,7 @@
 
 The Framework Part 1 - https://drive.google.com/file/d/1nBGG5AzUsoUA2_Vo8s2NjiyHiynMvjFm/view?usp=sharing
 Installing the Plugin - https://drive.google.com/file/d/1y6gBqpOvgqb_0ZW59w5fp3xQhRLrDGdK/view?usp=sharing
-Reverse Engineering Encompass - https://drive.google.com/file/d/1b0JPUy5-8RCYW0Wg6seE7SkBV0HcRtZw/view?usp=sharing
+Solutionizing Encompass - https://drive.google.com/file/d/1b0JPUy5-8RCYW0Wg6seE7SkBV0HcRtZw/view?usp=sharing
 
 **Introduction:** This Plugin was created as a free way for the community to have a way to modify any part of encompass. This also includes a nice single plugin structure that you can use to further develop this custom to your specifications. Please create the two custom fields as well as uploading the Settings file in IFB. 
 
