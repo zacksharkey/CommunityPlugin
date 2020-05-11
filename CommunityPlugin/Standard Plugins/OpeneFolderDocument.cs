@@ -24,6 +24,11 @@ namespace CommunityPlugin.Standard_Plugins
             return PluginAccess.CheckAccess(nameof(OpeneFolderDocument));
         }
 
+        public override void LoanOpened(object sender, EventArgs e)
+        {
+
+        }
+
         public override void FieldChanged(object sender, FieldChangeEventArgs e)
         {  
             if (e.FieldID.Equals("CX.OPENDOCUMENT") && !string.IsNullOrEmpty(e.NewValue))
