@@ -22,5 +22,8 @@ namespace CommunityPlugin.Objects.Models
 
         [JsonProperty("Permission")]
         public Dictionary<string, List<string>> Permission { get; set; }
+
+        [JsonProperty("Plugins")]
+        public Dictionary<string, PluginSettings> Plugins { get; set; }
     }
 }

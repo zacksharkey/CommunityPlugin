@@ -283,6 +283,7 @@
     <Compile Include="Objects\Models\FilterCDO.cs" />
     <Compile Include="Objects\Models\MailTrigger.cs" />
     <Compile Include="Objects\Models\PipelineFilter.cs" />
+    <Compile Include="Objects\Models\PluginSettings.cs" />
     <Compile Include="Objects\Models\RuleLockCDO.cs" />
     <Compile Include="Objects\Models\RuleLockInfo.cs" />
     <Compile Include="Objects\Models\HomeCounselor.cs" />
