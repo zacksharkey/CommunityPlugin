@@ -207,6 +207,21 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Non Native Modifications\TopMenu\AdvancedSearchForm.cs" />
+    <Compile Include="Non Native Modifications\TopMenu\AnalysisTool.cs" />
+    <Compile Include="Non Native Modifications\TopMenu\AnalysisTools\SearchCustomFields.cs" />
+    <Compile Include="Non Native Modifications\TopMenu\AnalysisTools\SearchLog.cs" />
+    <Compile Include="Non Native Modifications\TopMenu\AnalysisTools\SearchPerformanceLog.cs" />
+    <Compile Include="Non Native Modifications\TopMenu\AnalysisTools\SearchPersonas.cs" />
+    <Compile Include="Non Native Modifications\TopMenu\AnalysisTools\SearchPipelineViews.cs" />
+    <Compile Include="Non Native Modifications\TopMenu\AnalysisTools\SearchReports.cs" />
+    <Compile Include="Non Native Modifications\TopMenu\AnalysisTools\SearchTriggers.cs" />
+    <Compile Include="Non Native Modifications\TopMenu\AnalysisTools\SearchUserGroups.cs" />
+    <Compile Include="Non Native Modifications\TopMenu\AnalysisTool_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Non Native Modifications\TopMenu\AnalysisTool_Form.Designer.cs">
+      <DependentUpon>AnalysisTool_Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="Non Native Modifications\TopMenu\AutoMailer.cs" />
     <Compile Include="Non Native Modifications\TopMenu\AutoMailer_Form.cs">
       <SubType>Form</SubType>
@@ -235,8 +250,10 @@
     <Compile Include="Objects\Args\FormOpenedArgs.cs" />
     <Compile Include="Objects\Enums\CloneBizRuleType.cs" />
     <Compile Include="Objects\Enums\CloneCondition.cs" />
+    <Compile Include="Objects\Enums\EncompassLogType.cs" />
     <Compile Include="Objects\Enums\FrequencyType.cs" />
     <Compile Include="Objects\Enums\LinkType.cs" />
+    <Compile Include="Objects\Extension\StringExtensions.cs" />
     <Compile Include="Objects\Extension\WindowsFormsExtensions.cs" />
     <Compile Include="Objects\Factories\EmailFactory.cs" />
     <Compile Include="Objects\Helpers\AutoMailerCDO.cs" />
@@ -248,6 +265,7 @@
     <Compile Include="Objects\Helpers\RuleCDOHelper.cs" />
     <Compile Include="Objects\Helpers\VIPCDO.cs" />
     <Compile Include="Objects\Interface\AbstractControlDescriptionProvider.cs" />
+    <Compile Include="Objects\Interface\IAnalysisBase.cs" />
     <Compile Include="Objects\Interface\IBeforeCommit.cs" />
     <Compile Include="Objects\Interface\IBeforeMilestoneCompleted.cs" />
     <Compile Include="Objects\Interface\IBorrowerPairChanged.cs" />
@@ -275,19 +293,26 @@
     <Compile Include="Objects\Interface\LoanMenuControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Objects\Models\AnalysisBase.cs" />
+    <Compile Include="Objects\Models\AnalysisResult.cs" />
     <Compile Include="Objects\Models\AutoMailerCDORoot.cs" />
     <Compile Include="Objects\Models\BlockingCollectionQueue.cs" />
+    <Compile Include="Objects\Models\BusRule.cs" />
     <Compile Include="Objects\Models\CDO.cs" />
     <Compile Include="Objects\Models\CloneBizRuleInfo.cs" />
     <Compile Include="Objects\Models\EncompassFieldInfo.cs" />
+    <Compile Include="Objects\Models\EncompassLog.cs" />
     <Compile Include="Objects\Models\FilterCDO.cs" />
     <Compile Include="Objects\Models\MailTrigger.cs" />
+    <Compile Include="Objects\Models\PersonaResult.cs" />
     <Compile Include="Objects\Models\PipelineFilter.cs" />
     <Compile Include="Objects\Models\PluginSettings.cs" />
+    <Compile Include="Objects\Models\ReportResult.cs" />
     <Compile Include="Objects\Models\RuleLockCDO.cs" />
     <Compile Include="Objects\Models\RuleLockInfo.cs" />
     <Compile Include="Objects\Models\HomeCounselor.cs" />
     <Compile Include="Objects\Models\PluginAccessRight.cs" />
+    <Compile Include="Objects\Models\SearchResult.cs" />
     <Compile Include="Objects\Models\SearchResultField.cs" />
     <Compile Include="Objects\Models\SettingsCDO.cs" />
     <Compile Include="Objects\Models\VIPRoot.cs" />
@@ -333,6 +358,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Non Native Modifications\SideMenu\UserControls\LoanInformation.resx">
       <DependentUpon>LoanInformation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Non Native Modifications\TopMenu\AnalysisTool_Form.resx">
+      <DependentUpon>AnalysisTool_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Non Native Modifications\TopMenu\AutoMailer_Form.resx">
       <DependentUpon>AutoMailer_Form.cs</DependentUpon>

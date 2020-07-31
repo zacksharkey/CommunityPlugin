@@ -161,7 +161,7 @@ namespace CommunityPlugin.Objects
 
         public virtual void Login(object sender, EventArgs e)
         {
-            throw new ImplementationException(GetType().Name, nameof(ILogin), nameof(Login));
+            //throw new ImplementationException(GetType().Name, nameof(ILogin), nameof(Login));
         }
         private void Base_Login(object sender, EventArgs e)
         {

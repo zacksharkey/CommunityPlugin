@@ -36,6 +36,9 @@ namespace CommunityPlugin.Non_Native_Modifications
 
         private void CheckRules(GVItemCollection Items = null)
         {
+            if (Items == null)
+                return;
+
             foreach(GVItem item in Items)
             {
                 PipelineInfo info = item.Tag as PipelineInfo;
