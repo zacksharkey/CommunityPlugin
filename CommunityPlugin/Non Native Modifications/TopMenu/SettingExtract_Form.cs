@@ -43,9 +43,9 @@ namespace CommunityPlugin.Non_Native_Modifications.TopMenu
                 var zipContent = new MemoryStream();
                 var archive = new ZipArchive(zipContent, ZipArchiveMode.Create);
 
-                Add("Downloading Custom Data Objects", Session.ConfigurationManager.GetCustomDataObjectNames().ToDictionary(x => x, x => Session.ConfigurationManager.GetCustomDataObject(x)), archive, 10, worker);
-                Add("Downloading Plugins", Session.ConfigurationManager.GetCustomDataObjectNames().ToDictionary(x => x, x => Session.ConfigurationManager.GetCustomDataObject(x)), archive, 20, worker);
-                Add("Downloading Forms", Session.FormManager.GetFormInfos(InputFormType.Custom).ToDictionary(x => x.Name, x => Session.FormManager.GetCustomForm(x.FormID)), archive, 30, worker, ".emfrm");
+                //Add("Downloading Custom Data Objects", Session.ConfigurationManager.GetCustomDataObjectNames().ToDictionary(x => x, x => Session.ConfigurationManager.GetCustomDataObject(x)), archive, 10, worker);
+                //Add("Downloading Plugins", Session.ConfigurationManager.GetCustomDataObjectNames().ToDictionary(x => x, x => Session.ConfigurationManager.GetCustomDataObject(x)), archive, 20, worker);
+                //Add("Downloading Forms", Session.FormManager.GetFormInfos(InputFormType.Custom).ToDictionary(x => x.Name, x => Session.FormManager.GetCustomForm(x.FormID)), archive, 30, worker, ".emfrm");
 
 
                 lblStatus.Text = "Downloading Settings";

@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace CommunityPlugin.Non_Native_Modifications
 {
-    public class BackAndForward : Plugin, ITabChanged, ILoanTabChanged
+    public class BackAndForward : Plugin, ILogin, ITabChanged, ILoanTabChanged
     {
         private Panel ButtonsPanel = new Panel();
         private Button Back = new Button();
@@ -25,6 +25,8 @@ namespace CommunityPlugin.Non_Native_Modifications
         {
             return PluginAccess.CheckAccess(nameof(BackAndForward), false, false);
         }
+
+        public override void Login(object sender, EventArgs e) { }
 
         public override void LoanTabChanged(object sender, EventArgs e)
         {
