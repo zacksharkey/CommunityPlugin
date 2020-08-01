@@ -206,6 +206,12 @@
     <Compile Include="Non Native Modifications\SideMenu\UserControls\LoanInformation.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Non Native Modifications\TopMenu\AccessControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Non Native Modifications\TopMenu\AccessControl.Designer.cs">
+      <DependentUpon>AccessControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Non Native Modifications\TopMenu\AdvancedSearchForm.cs" />
     <Compile Include="Non Native Modifications\TopMenu\AnalysisTool.cs" />
     <Compile Include="Non Native Modifications\TopMenu\AnalysisTools\SearchCustomFields.cs" />
@@ -237,6 +243,13 @@
       <DependentUpon>Impersonate_Form.cs</DependentUpon>
     </Compile>
     <Compile Include="Non Native Modifications\TopMenu\MenuItemBase.cs" />
+    <Compile Include="Non Native Modifications\TopMenu\PluginManagement.cs" />
+    <Compile Include="Non Native Modifications\TopMenu\PluginManagement_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Non Native Modifications\TopMenu\PluginManagement_Form.Designer.cs">
+      <DependentUpon>PluginManagement_Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="Non Native Modifications\TopMenu\SettingExtract.cs" />
     <Compile Include="Non Native Modifications\TopMenu\SettingExtract_Form.cs">
       <SubType>Form</SubType>
@@ -359,6 +372,9 @@
     <EmbeddedResource Include="Non Native Modifications\SideMenu\UserControls\LoanInformation.resx">
       <DependentUpon>LoanInformation.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Non Native Modifications\TopMenu\AccessControl.resx">
+      <DependentUpon>AccessControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Non Native Modifications\TopMenu\AnalysisTool_Form.resx">
       <DependentUpon>AnalysisTool_Form.cs</DependentUpon>
     </EmbeddedResource>
@@ -367,6 +383,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Non Native Modifications\TopMenu\Impersonate_Form.resx">
       <DependentUpon>Impersonate_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Non Native Modifications\TopMenu\PluginManagement_Form.resx">
+      <DependentUpon>PluginManagement_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Non Native Modifications\TopMenu\SettingExtract_Form.resx">
       <DependentUpon>SettingExtract_Form.cs</DependentUpon>

@@ -22,7 +22,7 @@ namespace CommunityPlugin.Non_Native_Modifications.TopMenu
             GradientMenuStrip menu = (GradientMenuStrip)FormWrapper.Find("mainMenu");
             ToolStripMenuItem communityMenu = new ToolStripMenuItem("Community Menu");
             ToolStripMenuItem item = menu.Items[0] as ToolStripMenuItem;
-            item.DropDownItems.Add(communityMenu);
+            item.DropDownItems.Insert(0, communityMenu);
             communityMenu.DropDownItems.AddRange(GetDropDownItems());
         }
 
