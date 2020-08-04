@@ -18,8 +18,8 @@ namespace CommunityPlugin.Objects
         {
             InitializeComponent();
             InterfaceHelper ih = new InterfaceHelper();
-            comboBox1.Items.Add(ih.GetAll(typeof(Plugin)).Select(x => x.Name));
-            comboBox1.Items.Add(ih.GetAll(typeof(MenuItemBase)).Select(x => x.Name));
+            comboBox1.Items.AddRange(ih.GetAll(typeof(Plugin)).Select(x => x.Name).ToArray());
+            comboBox1.Items.AddRange(ih.GetAll(typeof(MenuItemBase)).Select(x => x.Name).ToArray());
             comboBox1.SelectedIndex = 0;
             comboBox1.TextChanged += ComboBox1_TextChanged;
             cbPersonas.Items.AddRange(EncompassApplication.Session.Users.Personas.Cast<EllieMae.Encompass.BusinessObjects.Users.Persona>().Select(x => x.Name).ToArray());
