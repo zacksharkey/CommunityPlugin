@@ -5,11 +5,15 @@ namespace CommunityPlugin.Objects.Models
 {
     public abstract class AnalysisBase : IAnalysisBase
     {
+        //public object ObjectToSearch { get; set; }
+
         public abstract bool IsTest();
 
         public abstract AnalysisResult ExecuteTest();
 
         public abstract AnalysisResult SearchResults(string Search);
+
+       // public abstract object GetObjects();
 
         public AnalysisResult Execute()
         {
@@ -36,5 +40,11 @@ namespace CommunityPlugin.Objects.Models
         {
             return SearchResults(Search);
         }
+
+        //public object GetObjectsToSearch()
+        //{
+        //    this.ObjectToSearch = GetObjects();
+        //    return this.ObjectToSearch;
+        //}
     }
 }
