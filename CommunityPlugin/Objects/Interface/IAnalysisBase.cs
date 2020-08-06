@@ -6,5 +6,6 @@ namespace CommunityPlugin.Objects.Interface
     {
         AnalysisResult Execute();
         AnalysisResult Search(string Search);
+        //object GetObjectsToSearch();
     }
 }
