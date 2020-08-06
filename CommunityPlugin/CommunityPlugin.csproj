@@ -221,7 +221,7 @@
     <Compile Include="Non Native Modifications\TopMenu\AdvancedSearchForm.cs" />
     <Compile Include="Non Native Modifications\TopMenu\AnalysisTool.cs" />
     <Compile Include="Non Native Modifications\TopMenu\AnalysisTools\SearchCustomFields.cs" />
-    <Compile Include="Non Native Modifications\TopMenu\AnalysisTools\SearchInputForms2.cs" />
+    <Compile Include="Non Native Modifications\TopMenu\AnalysisTools\SearchInputForm.cs" />
     <Compile Include="Non Native Modifications\TopMenu\AnalysisTools\SearchLog.cs" />
     <Compile Include="Non Native Modifications\TopMenu\AnalysisTools\SearchPerformanceLog.cs" />
     <Compile Include="Non Native Modifications\TopMenu\AnalysisTools\SearchPersonas.cs" />

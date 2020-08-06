@@ -9,18 +9,18 @@ namespace CommunityPlugin.Non_Native_Modifications.TopMenu.AnalysisTools
 {
     public class SearchUserGroups : AnalysisBase
     {
-        private List<UserGroup> UserGroups = null;
         public override AnalysisResult ExecuteTest() { return null; }
 
         public override bool IsTest() { return false; }
 
         public override void LoadCache()
         {
-            UserGroups = EncompassApplication.Session.Users.Groups.Cast<UserGroup>().ToList();
+            Cache = EncompassApplication.Session.Users.Groups.Cast<UserGroup>().ToList();
         }
 
         public override AnalysisResult SearchResults(string Search)
         {
+            List<UserGroup> UserGroups = (List<UserGroup>)Cache;
             Search = Search.ToUpper();
             List<UserGroup> groups = null;
             List<User> users = null;

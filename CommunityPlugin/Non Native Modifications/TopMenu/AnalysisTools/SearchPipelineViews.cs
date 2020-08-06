@@ -13,13 +13,13 @@ namespace CommunityPlugin.Non_Native_Modifications.TopMenu.AnalysisTools
 {
     public class SearchPipelineViews : AnalysisBase
     {
-        Dictionary<string, List<PersonaPipelineView>> Views = new Dictionary<string, List<PersonaPipelineView>>();
         public override AnalysisResult ExecuteTest() { return null; }
 
         public override bool IsTest() { return false; }
 
         public override void LoadCache()
         {
+            Dictionary<string, List<PersonaPipelineView>> Views = new Dictionary<string, List<PersonaPipelineView>>();
             PipelineViewAclManager pviewMgr = (PipelineViewAclManager)Session.ACL.GetAclManager(EllieMae.EMLite.ClientServer.AclCategory.PersonaPipelineView);
             foreach (EllieMae.Encompass.BusinessObjects.Users.Persona persona in EncompassApplication.Session.Users.Personas.Cast<EllieMae.Encompass.BusinessObjects.Users.Persona>())
             {
@@ -31,10 +31,12 @@ namespace CommunityPlugin.Non_Native_Modifications.TopMenu.AnalysisTools
 
                 Views.Add(persona.Name, personaViews);
             }
+            Cache = Views;
         }
 
         public override AnalysisResult SearchResults(string Search)
         {
+            Dictionary<string, List<PersonaPipelineView>> Views = (Dictionary<string, List<PersonaPipelineView>>)Cache;
             List<SearchResult> results = new List<SearchResult>();
             LoanReportFieldDefs defs = LoanReportFieldDefs.GetLoanReportFieldDefs(Session.DefaultInstance).GetFieldDefsI(EllieMae.EMLite.ClientServer.LoanReportFieldFlags.AllDatabaseFields, false, Session.DefaultInstance);
             LoanReportFieldDef def = defs.GetFieldByID(Search);

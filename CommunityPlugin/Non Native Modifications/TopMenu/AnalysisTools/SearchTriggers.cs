@@ -9,18 +9,18 @@ namespace CommunityPlugin.Non_Native_Modifications.TopMenu.AnalysisTools
 {
     public class SearchTriggers : AnalysisBase
     {
-        private BizRuleInfo[] Rules = null;
         public override AnalysisResult ExecuteTest() { return null; }
 
         public override bool IsTest() { return false; }
 
         public override void LoadCache()
         {
-            Rules = EncompassHelper.SessionObjects.BpmManager.GetRules();
+            Cache = EncompassHelper.SessionObjects.BpmManager.GetRules();
         }
 
         public override AnalysisResult SearchResults(string Search)
         {
+            BizRuleInfo[] Rules = (BizRuleInfo[])Cache;
             Search = Search.ToUpper();
             List<BusRule> results = Rules.Where(x => x.RuleName.ToUpper().Contains(Search)
                                                                                                 || x.Condition.ToStringFieldValue().ToUpper().Contains(Search)

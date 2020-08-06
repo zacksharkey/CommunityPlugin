@@ -5,6 +5,7 @@ namespace CommunityPlugin.Objects.Models
 {
     public abstract class AnalysisBase : IAnalysisBase
     {
+        public object Cache { get; set; }
         public abstract void LoadCache();
         public abstract bool IsTest();
 

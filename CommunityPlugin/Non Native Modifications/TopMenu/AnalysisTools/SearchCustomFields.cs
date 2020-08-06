@@ -3,23 +3,24 @@ using CommunityPlugin.Objects.Models;
 using EllieMae.EMLite.DataEngine;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 
 namespace CommunityPlugin.Non_Native_Modifications.TopMenu.AnalysisTools
 {
     public class SearchCustomFields : AnalysisBase
     {
-        private CustomFieldsInfo Fields = null;
         public override AnalysisResult ExecuteTest() { return null; }
 
         public override bool IsTest() { return false; }
 
         public override void LoadCache()
         {
-            Fields = EncompassHelper.SessionObjects.ConfigurationManager.GetLoanCustomFields();
+            Cache = EncompassHelper.SessionObjects.ConfigurationManager.GetLoanCustomFields();
         }
 
         public override AnalysisResult SearchResults(string Search)
         {
+            CustomFieldsInfo Fields = (CustomFieldsInfo)Cache;
             Search = Search.ToUpper();
             List<CustomFieldInfo> info = Fields.Cast<CustomFieldInfo>()
                                                .Where(x => x.FieldID.ToUpper().Contains(Search) 
