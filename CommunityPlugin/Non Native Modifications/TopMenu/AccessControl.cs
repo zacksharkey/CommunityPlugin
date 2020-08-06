@@ -1,4 +1,5 @@
-﻿using CommunityPlugin.Objects.Helpers;
+﻿using CommunityPlugin.Non_Native_Modifications.TopMenu;
+using CommunityPlugin.Objects.Helpers;
 using CommunityPlugin.Objects.Interface;
 using CommunityPlugin.Objects.Models;
 using Elli.Common.Extensions;
@@ -17,10 +18,8 @@ namespace CommunityPlugin.Objects
         {
             InitializeComponent();
             InterfaceHelper ih = new InterfaceHelper();
-            foreach (Type type in ih.GetAll(typeof(Plugin)))
-            {
-                comboBox1.Items.Add(type.Name);
-            }
+            comboBox1.Items.AddRange(ih.GetAll(typeof(Plugin)).Select(x => x.Name).ToArray());
+            comboBox1.Items.AddRange(ih.GetAll(typeof(MenuItemBase)).Select(x => x.Name).ToArray());
             comboBox1.SelectedIndex = 0;
             comboBox1.TextChanged += ComboBox1_TextChanged;
             cbPersonas.Items.AddRange(EncompassApplication.Session.Users.Personas.Cast<EllieMae.Encompass.BusinessObjects.Users.Persona>().Select(x => x.Name).ToArray());
