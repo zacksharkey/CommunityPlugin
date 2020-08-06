@@ -326,7 +326,6 @@
     <Compile Include="Objects\Models\EncompassLog.cs" />
     <Compile Include="Objects\Models\FilterCDO.cs" />
     <Compile Include="Objects\Models\IFBLog.cs" />
-    <Compile Include="Objects\Models\InputFormResult.cs" />
     <Compile Include="Objects\Models\InputForm.cs" />
     <Compile Include="Objects\Models\InputFormControl.cs" />
     <Compile Include="Objects\Models\InputFormEvent.cs" />
