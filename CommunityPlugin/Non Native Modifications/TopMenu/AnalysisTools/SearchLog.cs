@@ -9,6 +9,11 @@ namespace CommunityPlugin.Non_Native_Modifications.TopMenu.AnalysisTools
 
         public override bool IsTest() { return false; }
 
+        public override void LoadCache()
+        {
+
+        }
+
         public override AnalysisResult SearchResults(string Search)
         {
             return new AnalysisResult(nameof(SearchLog)) { Result = EncompassHelper.ReadLog(Search) };

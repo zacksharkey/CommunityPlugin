@@ -13,31 +13,46 @@ namespace CommunityPlugin.Non_Native_Modifications.TopMenu.AnalysisTools
 {
     public class SearchPipelineViews : AnalysisBase
     {
+        Dictionary<string, List<PersonaPipelineView>> Views = new Dictionary<string, List<PersonaPipelineView>>();
         public override AnalysisResult ExecuteTest() { return null; }
 
         public override bool IsTest() { return false; }
+
+        public override void LoadCache()
+        {
+            PipelineViewAclManager pviewMgr = (PipelineViewAclManager)Session.ACL.GetAclManager(EllieMae.EMLite.ClientServer.AclCategory.PersonaPipelineView);
+            foreach (EllieMae.Encompass.BusinessObjects.Users.Persona persona in EncompassApplication.Session.Users.Personas.Cast<EllieMae.Encompass.BusinessObjects.Users.Persona>())
+            {
+                List<PersonaPipelineView> personaViews = new List<PersonaPipelineView>();
+                foreach (PersonaPipelineView view in pviewMgr.GetPersonaPipelineViews(persona.ID))
+                {
+                    personaViews.Add(view);
+                }
+
+                Views.Add(persona.Name, personaViews);
+            }
+        }
 
         public override AnalysisResult SearchResults(string Search)
         {
             List<SearchResult> results = new List<SearchResult>();
             LoanReportFieldDefs defs = LoanReportFieldDefs.GetLoanReportFieldDefs(Session.DefaultInstance).GetFieldDefsI(EllieMae.EMLite.ClientServer.LoanReportFieldFlags.AllDatabaseFields, false, Session.DefaultInstance);
             LoanReportFieldDef def = defs.GetFieldByID(Search);
-            PipelineViewAclManager pviewMgr = (PipelineViewAclManager)Session.ACL.GetAclManager(EllieMae.EMLite.ClientServer.AclCategory.PersonaPipelineView);
-            foreach(EllieMae.Encompass.BusinessObjects.Users.Persona persona in EncompassApplication.Session.Users.Personas.Cast<EllieMae.Encompass.BusinessObjects.Users.Persona>())
+            foreach (EllieMae.Encompass.BusinessObjects.Users.Persona persona in EncompassApplication.Session.Users.Personas.Cast<EllieMae.Encompass.BusinessObjects.Users.Persona>())
             {
-                foreach(PersonaPipelineView view in pviewMgr.GetPersonaPipelineViews(persona.ID))
+                foreach (PersonaPipelineView view in Views[persona.Name])
                 {
-                    if(view.Filter != null)
+                    if (view.Filter != null)
                     {
-                        foreach(FieldFilter f in view.Filter.Where(x=> x.FieldID.Equals(Search, StringComparison.OrdinalIgnoreCase)))
+                        foreach (FieldFilter f in view.Filter.Where(x => x.FieldID.Equals(Search, StringComparison.OrdinalIgnoreCase)))
                         {
                             results.Add(new SearchResult() { Persona = persona.Name, Name = view.Name, MatchingProperty = $"Filter [{f.FieldID}] {f.OperatorTypeAsString}  {f.ValueFrom} {f.ValueTo}" });
                         }
                     }
 
-                    if(view.Columns != null)
+                    if (view.Columns != null)
                     {
-                        foreach(PersonaPipelineViewColumn c in view.Columns.Where(x=>x.ColumnDBName.Equals((def != null ? def.ToTableLayoutColumn().ColumnID : ""), StringComparison.OrdinalIgnoreCase)))
+                        foreach (PersonaPipelineViewColumn c in view.Columns.Where(x => x.ColumnDBName.Equals((def != null ? def.ToTableLayoutColumn().ColumnID : ""), StringComparison.OrdinalIgnoreCase)))
                         {
                             results.Add(new SearchResult() { Persona = persona.Name, Name = view.Name, MatchingProperty = "Column" });
                         }

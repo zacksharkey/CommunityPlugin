@@ -17,7 +17,7 @@ namespace CommunityPlugin.Non_Native_Modifications.TopMenu.AnalysisTools
 
         public override bool IsTest() { return false; }
 
-        public override AnalysisResult SearchResults(string Search)
+        public override void LoadCache()
         {
             ReportResults = new List<ReportResult>();
             Sessions.Session def = Session.DefaultInstance;
@@ -26,24 +26,29 @@ namespace CommunityPlugin.Non_Native_Modifications.TopMenu.AnalysisTools
             ReportIFSExplorer ifsExplorer = new ReportIFSExplorer(r, def);
             FileSystemEntry entry = new FileSystemEntry("\\", FileSystemEntry.Types.Folder, (string)null);
             FileSystemEntry[] entries = ifsExplorer.GetFileSystemEntries(entry);
-            foreach(FileSystemEntry e in entries)
+            foreach (FileSystemEntry e in entries)
             {
-                Recurse(e, ifsExplorer, Search);
+                Recurse(e, ifsExplorer);
             }
+        }
 
-            return new AnalysisResult(nameof(SearchReports)) { Result = ReportResults };
+        public override AnalysisResult SearchResults(string Search)
+        {
+            List<ReportResult> Results = ReportResults.Where(x => (x.Filters?.Any(y => y.FieldID.Equals(Search, StringComparison.OrdinalIgnoreCase)) ?? false) || (x.Columns?.Any(z => z.FieldID.Equals(Search, StringComparison.OrdinalIgnoreCase)) ?? false)).ToList();
+
+            return new AnalysisResult(nameof(SearchReports)) { Result = Results };
 
         }
 
-        private void Recurse(FileSystemEntry Entry, ReportIFSExplorer IFSExplorer, string Search)
+        private void Recurse(FileSystemEntry Entry, ReportIFSExplorer IFSExplorer)
         {
             if(Entry.Type.Equals(FileSystemEntry.Types.File))
             {
                 ReportSettings settings = Session.ReportManager.GetReportSettings(Entry);
                 if(settings.Columns != null)
-                    ReportResults.AddRange(settings.Columns.Where(x => x.ID.Equals(Search, StringComparison.OrdinalIgnoreCase))
-                                                           .Select(x => new ReportResult() 
+                    ReportResults.AddRange(settings.Columns.Select(x => new ReportResult() 
                                                            { 
+                                                               Columns = settings.Columns,
                                                                Name = Entry.Name, 
                                                                Path = Entry.Path, 
                                                                MatchingProperty = "Column" 
@@ -51,20 +56,20 @@ namespace CommunityPlugin.Non_Native_Modifications.TopMenu.AnalysisTools
             
 
                 if(settings.Filters != null) 
-                    ReportResults.AddRange(settings.Filters.Where(x => x.FieldID.Equals(Search, StringComparison.OrdinalIgnoreCase))
-                        .Select(x => new ReportResult() 
-                        { 
-                            Name = Entry.Name, 
-                            Path = Entry.Path, 
-                            MatchingProperty = $"Filter [{x.FieldID}] {x.OperatorTypeAsString} {x.ValueFrom} {x.ValueTo}"
-                        }));
+                    ReportResults.AddRange(settings.Filters.Select(x => new ReportResult()
+                                                            {
+                                                                Filters = settings.Filters,
+                                                                Name = Entry.Name, 
+                                                                Path = Entry.Path, 
+                                                                MatchingProperty = $"Filter [{x.FieldID}] {x.OperatorTypeAsString} {x.ValueFrom} {x.ValueTo}"
+                                                            }));
 
             }
             else
             {
                 foreach(FileSystemEntry file in IFSExplorer.GetFileSystemEntries(Entry))
                 {
-                    Recurse(file, IFSExplorer, Search);
+                    Recurse(file, IFSExplorer);
                 }
             }
         }

@@ -20,6 +20,21 @@ namespace CommunityPlugin.Non_Native_Modifications.TopMenu
             AnalysisClasses.AddRange(i.GetAll(typeof(AnalysisBase)).Select(x=> Activator.CreateInstance(x)).Cast<AnalysisBase>().ToList());
             cmbFilter.Items.AddRange(AnalysisClasses.Select(x=>x.GetType().Name).ToArray());
             Tracing.Debug = true;
+
+            backgroundWorker1.DoWork += BackgroundWorker1_DoWork;
+            backgroundWorker1.RunWorkerAsync();
+        }
+
+
+        private void BackgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+            pnlStatus.Visible = true;
+
+            foreach(AnalysisBase baseClass in AnalysisClasses)
+                baseClass.LoadCache();
+
+
+            pnlStatus.Visible = false;
         }
 
         private void btnSearch_Click(object sender, EventArgs e)

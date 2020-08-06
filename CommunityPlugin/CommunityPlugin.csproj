@@ -221,6 +221,7 @@
     <Compile Include="Non Native Modifications\TopMenu\AdvancedSearchForm.cs" />
     <Compile Include="Non Native Modifications\TopMenu\AnalysisTool.cs" />
     <Compile Include="Non Native Modifications\TopMenu\AnalysisTools\SearchCustomFields.cs" />
+    <Compile Include="Non Native Modifications\TopMenu\AnalysisTools\SearchInputForms2.cs" />
     <Compile Include="Non Native Modifications\TopMenu\AnalysisTools\SearchLog.cs" />
     <Compile Include="Non Native Modifications\TopMenu\AnalysisTools\SearchPerformanceLog.cs" />
     <Compile Include="Non Native Modifications\TopMenu\AnalysisTools\SearchPersonas.cs" />
@@ -325,6 +326,7 @@
     <Compile Include="Objects\Models\EncompassLog.cs" />
     <Compile Include="Objects\Models\FilterCDO.cs" />
     <Compile Include="Objects\Models\IFBLog.cs" />
+    <Compile Include="Objects\Models\InputFormResult.cs" />
     <Compile Include="Objects\Models\MailTrigger.cs" />
     <Compile Include="Objects\Models\PersonaResult.cs" />
     <Compile Include="Objects\Models\PipelineFilter.cs" />
