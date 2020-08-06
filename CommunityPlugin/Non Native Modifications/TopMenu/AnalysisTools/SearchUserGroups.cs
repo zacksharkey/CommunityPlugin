@@ -13,20 +13,26 @@ namespace CommunityPlugin.Non_Native_Modifications.TopMenu.AnalysisTools
 
         public override bool IsTest() { return false; }
 
+        public override void LoadCache()
+        {
+            Cache = EncompassApplication.Session.Users.Groups.Cast<UserGroup>().ToList();
+        }
+
         public override AnalysisResult SearchResults(string Search)
         {
+            List<UserGroup> UserGroups = (List<UserGroup>)Cache;
             Search = Search.ToUpper();
             List<UserGroup> groups = null;
             List<User> users = null;
             if(Search.Empty())
             {
-                groups = EncompassApplication.Session.Users.Groups.Cast<UserGroup>().ToList();
+                groups = UserGroups;
             }
             else
             {
-                UserGroup g = EncompassApplication.Session.Users.Groups.GetGroupByName(Search);
+                UserGroup g = UserGroups.Where(x=>x.Name.ToUpper().Equals(Search)).FirstOrDefault();
                 if (g == null)
-                    groups = EncompassApplication.Session.Users.Groups.Cast<UserGroup>().Where(x => x.Name.ToUpper().Contains(Search)).ToList();
+                    groups = UserGroups.Where(x => x.Name.ToUpper().Contains(Search)).ToList();
                 else
                     users = g.GetUsers().Cast<User>().ToList();
             }
