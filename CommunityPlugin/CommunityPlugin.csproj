@@ -145,6 +145,8 @@
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="Reporting, Version=19.4.0.4, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\SmartClientCache\Apps\UAC\Ellie Mae\xIHR5EqGa7zPnRG0YpD5z4TPAB0=\Encompass360\Reporting.dll</HintPath>
@@ -169,6 +171,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\SmartClientCache\Apps\UAC\Ellie Mae\xIHR5EqGa7zPnRG0YpD5z4TPAB0=\Encompass360\UIElements.dll</HintPath>
     </Reference>
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Non Native Modifications\AlphaAlerts.cs" />
@@ -190,6 +193,7 @@
     </Compile>
     <Compile Include="Non Native Modifications\Pipeline\ShowColumnField.cs" />
     <Compile Include="Non Native Modifications\PrintFormToEfolder.cs" />
+    <Compile Include="Non Native Modifications\RolodexOverride.cs" />
     <Compile Include="Non Native Modifications\RuleLock.cs" />
     <Compile Include="Non Native Modifications\SideMenu\Controls\CustomLinkLabel.cs">
       <SubType>Component</SubType>
@@ -267,6 +271,7 @@
     <Compile Include="Non Native Modifications\TopMenu\TopMenuBase.cs" />
     <Compile Include="Non Native Modifications\VIP.cs" />
     <Compile Include="Objects\Args\BorrowerPairChangedEventArgs.cs" />
+    <Compile Include="Objects\Args\EncompassFormOpenedArgs.cs" />
     <Compile Include="Objects\Args\FormOpenedArgs.cs" />
     <Compile Include="Objects\Enums\CloneBizRuleType.cs" />
     <Compile Include="Objects\Enums\CloneCondition.cs" />

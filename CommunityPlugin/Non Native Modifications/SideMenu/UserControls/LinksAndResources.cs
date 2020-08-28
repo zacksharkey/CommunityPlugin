@@ -13,7 +13,7 @@ namespace CommunityPlugin.Non_Native_Modifications.SideMenu.UserControls
 {
     public class LinksAndResources : LoanMenuControl
     {
-        private Dictionary<string, Dictionary<string, string>> Links => CDOHelper.CDO.CommunitySettings.Links.ContainsKey(EncompassHelper.LastPersona) ? CDOHelper.CDO.CommunitySettings.Links[EncompassHelper.LastPersona] : CDOHelper.CDO.CommunitySettings.Links["Default"];
+        private Dictionary<string, Dictionary<string, string>> Links => CDOHelper.CDO.CommunitySettings.Links == null ? new Dictionary<string, Dictionary<string, string>>() : CDOHelper.CDO.CommunitySettings.Links.ContainsKey(EncompassHelper.LastPersona) ? CDOHelper.CDO.CommunitySettings.Links[EncompassHelper.LastPersona] : CDOHelper.CDO.CommunitySettings.Links["Default"];
         private FlowLayoutPanel layout;
         public override bool CanRun()
         {
