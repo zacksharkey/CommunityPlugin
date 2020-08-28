@@ -193,7 +193,6 @@
     </Compile>
     <Compile Include="Non Native Modifications\Pipeline\ShowColumnField.cs" />
     <Compile Include="Non Native Modifications\PrintFormToEfolder.cs" />
-    <Compile Include="Non Native Modifications\RolodexOverride.cs" />
     <Compile Include="Non Native Modifications\RuleLock.cs" />
     <Compile Include="Non Native Modifications\SideMenu\Controls\CustomLinkLabel.cs">
       <SubType>Component</SubType>
@@ -271,7 +270,6 @@
     <Compile Include="Non Native Modifications\TopMenu\TopMenuBase.cs" />
     <Compile Include="Non Native Modifications\VIP.cs" />
     <Compile Include="Objects\Args\BorrowerPairChangedEventArgs.cs" />
-    <Compile Include="Objects\Args\EncompassFormOpenedArgs.cs" />
     <Compile Include="Objects\Args\FormOpenedArgs.cs" />
     <Compile Include="Objects\Enums\CloneBizRuleType.cs" />
     <Compile Include="Objects\Enums\CloneCondition.cs" />
