@@ -41,13 +41,23 @@ namespace CommunityPlugin.Objects
 
         private static bool CheckAccessInPlugins(string pluginName, bool menu, bool loan)
         {
-            if (Plugins.TryGetValue(pluginName, out var pluginSettings) == false) return false;
+            PluginSettings pluginSettings = null;
+            if (menu)
+            {
+                if ((Plugins.TryGetValue("SideMenu", out pluginSettings) == true) && (Plugins.TryGetValue(pluginName, out pluginSettings) == true))
+                    return true;
+            }
+            else
+            {
+                if (Plugins.TryGetValue(pluginName, out pluginSettings) == false) return false;
+            }
+
+            if (pluginSettings == null) return false;
 
             if (pluginSettings.Permissions == null) return false;
 
             if (pluginSettings.Permissions.Everyone) return true;
 
-            
             var isAllowedToRun = !loan && pluginSettings.Permissions.Everyone;
 
             if (!isAllowedToRun && pluginSettings.Permissions.Personas != null)

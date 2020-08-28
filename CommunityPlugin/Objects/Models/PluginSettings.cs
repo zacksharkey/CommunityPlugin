@@ -10,6 +10,12 @@ namespace CommunityPlugin.Objects.Models
         public Permission Permissions { get; set; }
         public Dictionary<string, JObject> Settings { get; set; }
 
+        public PluginSettings()
+        {
+            this.Permissions = new Permission();
+            this.Settings = new Dictionary<string, JObject>();
+        }
+
         public class Permission
         {
             public bool Everyone { get; set; }

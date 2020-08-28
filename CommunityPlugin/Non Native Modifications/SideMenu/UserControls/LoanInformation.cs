@@ -16,7 +16,7 @@ namespace CommunityPlugin.Non_Native_Modifications.SideMenu.UserControls
     {
         private System.Windows.Forms.DataGridView dataGridView1;
 
-        private Dictionary<string,string> Fields => CDOHelper.CDO.CommunitySettings.LoanInformation.ContainsKey(EncompassHelper.LastPersona) ? CDOHelper.CDO.CommunitySettings.LoanInformation[EncompassHelper.LastPersona] : CDOHelper.CDO.CommunitySettings.LoanInformation["Default"];
+        private Dictionary<string,string> Fields => CDOHelper.CDO.CommunitySettings.LoanInformation == null ? new Dictionary<string, string>(): CDOHelper.CDO.CommunitySettings.LoanInformation.ContainsKey(EncompassHelper.LastPersona) ? CDOHelper.CDO.CommunitySettings.LoanInformation[EncompassHelper.LastPersona] : CDOHelper.CDO.CommunitySettings.LoanInformation["Default"];
         private Dictionary<string, EncompassFieldInfo> InfoLines => Fields.ToDictionary(x => x.Key.ToString(), x => new EncompassFieldInfo(x.Key, x.Value), StringComparer.OrdinalIgnoreCase);
         public override bool CanRun()
         {
@@ -56,8 +56,12 @@ namespace CommunityPlugin.Non_Native_Modifications.SideMenu.UserControls
             style.BackColor = Color.Gray;
             style.ForeColor = Color.Black;
 
-            this.dataGridView1.Rows[0].ReadOnly = true;
-            this.dataGridView1.Rows[0].DefaultCellStyle = style;
+            if (this.dataGridView1.Rows.Count > 0)
+            {
+                this.dataGridView1.Rows[0].ReadOnly = true;
+                this.dataGridView1.Rows[0].DefaultCellStyle = style;
+            }
+
             this.dataGridView1.Refresh();
         }
 
