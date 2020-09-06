@@ -14,7 +14,7 @@
 **Introduction:** This Plugin was built in an effort to help the community rapidly create ideas in Encompass. 
 
 **Settings:** The new Plugin Management Screen is where you will setup all of your plugin access rights
-https://media-exp1.licdn.com/dms/image/C4E22AQHUm8v-2GTklQ/feedshare-shrink_2048_1536-alternative/0?e=1602115200&v=beta&t=d5buVutAPDerz2xOmSyBuL4okXsLMjLJxDPw00_jIUU <br>
+<img src="https://media-exp1.licdn.com/dms/image/C4E22AQHUm8v-2GTklQ/feedshare-shrink_2048_1536-alternative/0?e=1602115200&v=beta&t=d5buVutAPDerz2xOmSyBuL4okXsLMjLJxDPw00_jIUU"> <br>
 
 **SOME OF THE SOLUTIONS INCLUDE:**<br>
 **Input Form Automator :** Automate Applying Input Form sets based on persona, milestone, loan type, user, etc<br>
