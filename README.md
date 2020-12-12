@@ -5,11 +5,11 @@
 
 **Tutorials:**
 
-**The Framework Part 1** - https://www.youtube.com/watch?v=XW0OSDUA-AU <br>
-**Installing the Plugin** - https://www.youtube.com/watch?v=ZyoEFFkt2Bo <br>
-**Solutionizing Encompass** - https://www.youtube.com/watch?v=vZD6_ufyQ1Y <br>
-**Finding Field Calculations** - https://www.youtube.com/watch?v=POAtMQUYZ2E <br>
-**Debugging your plugin** - https://www.youtube.com/watch?v=HKTaqdWnz8w <br>
+**The Framework Part 1** - https://youtu.be/9NosL2HwZWM <br>
+**Installing the Plugin** - https://youtu.be/sA2pMGhBxeM <br>
+**Solutionizing Encompass** - https://youtu.be/gP2heVPHb08 <br>
+**Finding Field Calculations** - https://youtu.be/8T9deHoDOjw <br>
+**Debugging your plugin** - https://youtu.be/4k5jkDpJVz0 <br>
 
 **Introduction:** This Plugin was built in an effort to help the community rapidly create ideas in Encompass. 
 
