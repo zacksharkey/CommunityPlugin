@@ -1,10 +1,10 @@
-﻿using CommunityPlugin.Objects.Extension;
+﻿using CommunityPlugin.Objects.Helpers;
+using CommunityPlugin.Objects.Extension;
 using CommunityPlugin.Objects.Models;
 using EllieMae.EMLite.ClientServer;
 using EllieMae.EMLite.Common;
 using EllieMae.EMLite.ContactUI;
 using EllieMae.EMLite.DataEngine;
-using EllieMae.EMLite.RemotingServices;
 using EllieMae.Encompass.Automation;
 using EllieMae.Encompass.BusinessObjects.Loans;
 using EllieMae.Encompass.BusinessObjects.Users;
@@ -15,17 +15,18 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Mail;
-using System.Reflection;
 using System.Windows.Forms;
 using Persona = EllieMae.Encompass.BusinessObjects.Users.Persona;
+using CommunityPlugin.Objects.CustomDataObjects;
 
-namespace CommunityPlugin.Objects.Helpers
-{
+namespace CommunityPlugin.Objects.Helpers  
+{ 
     public static class EncompassHelper
     {
         public static bool IsTest()
         {
-            return EncompassApplication.Session.ServerURI.Contains(CDOHelper.CDO.CommunitySettings.TestServer);
+            CommunitySettings cdo = CustomDataObject.Get<CommunitySettings>(CommunitySettings.Key);
+            return EncompassApplication.Session.ServerURI.Contains(cdo.TestServer);
         }
 
         public static string FieldDescription(string FieldID)

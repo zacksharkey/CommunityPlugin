@@ -13,7 +13,7 @@ namespace CommunityPlugin.Non_Native_Modifications.SideMenu
         }
         public override void LoanTabChanged(object sender, EventArgs e)
         {
-            SideMenuUI.CreateMenu(PluginAccess.CheckAccess(nameof(SideMenu), true, true));
+            SideMenuUI.CreateMenu(PluginAccess.CheckAccess(nameof(SideMenu)));
         }
 
         public override void TabChanged(object sender, EventArgs e)

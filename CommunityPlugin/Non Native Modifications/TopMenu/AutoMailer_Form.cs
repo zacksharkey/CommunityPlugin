@@ -17,7 +17,8 @@ namespace CommunityPlugin.Non_Native_Modifications.TopMenu
 {
     public partial class AutoMailer_Form : Form
     {
-        private string TriggerName; 
+        private string TriggerName;
+        AutoMailerCDO CDO = CustomDataObject.Get<AutoMailerCDO>(AutoMailerCDO.Key);
         public AutoMailer_Form()
         {
             InitializeComponent();
@@ -29,7 +30,7 @@ namespace CommunityPlugin.Non_Native_Modifications.TopMenu
             ClearControls();
 
             cmbTriggers.Items.Clear();
-            cmbTriggers.Items.AddRange(AutoMailerCDO.CDO.Triggers.Select(x => x.Name).ToArray());
+            cmbTriggers.Items.AddRange(CDO.Triggers.Select(x => x.Name).ToArray());
 
             Sessions.Session defaultInstance = Session.DefaultInstance;
             FSExplorer rptExplorer = new FSExplorer(defaultInstance);
@@ -81,10 +82,8 @@ namespace CommunityPlugin.Non_Native_Modifications.TopMenu
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
-            AutoMailerCDORoot cdo = AutoMailerCDO.CDO;
-
             bool update = !string.IsNullOrEmpty(TriggerName);
-            if (cdo.Triggers.Any(x => x.Name.Equals(txtName.Text)) && !update)
+            if (CDO.Triggers.Any(x => x.Name.Equals(txtName.Text)) && !update)
             {
                 MessageBox.Show("There is already a Trigger with this name.");
                 return;
@@ -96,7 +95,7 @@ namespace CommunityPlugin.Non_Native_Modifications.TopMenu
                 return;
             }
 
-            MailTrigger trigger = update ? cdo.Triggers.Where(x => x.Name.Equals(TriggerName)).FirstOrDefault() : new MailTrigger();
+            MailTrigger trigger = update ? CDO.Triggers.Where(x => x.Name.Equals(TriggerName)).FirstOrDefault() : new MailTrigger();
             trigger.Name = txtName.Text;
             trigger.ReportFilter = cmbReports.SelectedItem.ToString();
             trigger.Frequency = (FrequencyType)Enum.Parse(typeof(FrequencyType), cmbFrequency.SelectedItem.ToString());
@@ -111,24 +110,22 @@ namespace CommunityPlugin.Non_Native_Modifications.TopMenu
             trigger.Active = chkTriggerActive.Checked;
 
             if (!update)
-                cdo.Triggers.Add(trigger);
+                CDO.Triggers.Add(trigger);
 
-            AutoMailerCDO.UpdateCDO(cdo);
-            AutoMailerCDO.UploadCDO();
+            CustomDataObject.Save<AutoMailerCDO>(AutoMailerCDO.Key, CDO);
 
             SetupControls();
         }
 
         private void BtnDuplicate_Click(object sender, EventArgs e)
         {
-            AutoMailerCDORoot cdo = AutoMailerCDO.CDO;
             if (!string.IsNullOrEmpty(TriggerName))
             {
-                MailTrigger trigger = cdo.Triggers.Where(x => x.Name.Equals(TriggerName)).FirstOrDefault();
+                MailTrigger trigger = CDO.Triggers.Where(x => x.Name.Equals(TriggerName)).FirstOrDefault();
                 MailTrigger newTrigger = trigger.Clone(trigger);
-                cdo.Triggers.Add(newTrigger);
-                AutoMailerCDO.UpdateCDO(cdo);
-                AutoMailerCDO.UploadCDO();
+                CDO.Triggers.Add(newTrigger);
+
+                CustomDataObject.Save<AutoMailerCDO>(AutoMailerCDO.Key, CDO);
                 SetupControls();
             }
         }
@@ -138,18 +135,17 @@ namespace CommunityPlugin.Non_Native_Modifications.TopMenu
             bool update = !string.IsNullOrEmpty(TriggerName);
             if (update)
             {
-                AutoMailerCDORoot cdo = AutoMailerCDO.CDO;
-                MailTrigger trigger = cdo.Triggers.Where(x => x.Name.Equals(TriggerName)).FirstOrDefault();
-                cdo.Triggers.Remove(trigger);
-                AutoMailerCDO.UpdateCDO(cdo);
-                AutoMailerCDO.UploadCDO();
+                MailTrigger trigger = CDO.Triggers.Where(x => x.Name.Equals(TriggerName)).FirstOrDefault();
+                CDO.Triggers.Remove(trigger);
+
+                CustomDataObject.Save<AutoMailerCDO>(AutoMailerCDO.Key, CDO);
                 SetupControls();
             }
         }
 
         private void CmbTriggers_SelectedIndexChanged(object sender, EventArgs e)
         {
-            MailTrigger trigger = AutoMailerCDO.CDO.Triggers.Where(x => x.Name.Equals(cmbTriggers.SelectedItem.ToString())).FirstOrDefault();
+            MailTrigger trigger = CDO.Triggers.Where(x => x.Name.Equals(cmbTriggers.SelectedItem.ToString())).FirstOrDefault();
             TriggerName = trigger.Name;
             txtName.Text = trigger.Name;
             cmbReports.Text = trigger.ReportFilter;

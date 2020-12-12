@@ -271,6 +271,7 @@
     <Compile Include="Non Native Modifications\VIP.cs" />
     <Compile Include="Objects\Args\BorrowerPairChangedEventArgs.cs" />
     <Compile Include="Objects\Args\FormOpenedArgs.cs" />
+    <Compile Include="Objects\Enums\CDOType.cs" />
     <Compile Include="Objects\Enums\CloneBizRuleType.cs" />
     <Compile Include="Objects\Enums\CloneCondition.cs" />
     <Compile Include="Objects\Enums\EncompassLogType.cs" />
@@ -280,15 +281,13 @@
     <Compile Include="Objects\Extension\StringExtensions.cs" />
     <Compile Include="Objects\Extension\WindowsFormsExtensions.cs" />
     <Compile Include="Objects\Factories\EmailFactory.cs" />
-    <Compile Include="Objects\Helpers\AutoMailerCDO.cs" />
-    <Compile Include="Objects\Helpers\CDOHelper.cs" />
+    <Compile Include="Objects\CustomDataObjects\AutoMailerCDO.cs" />
+    <Compile Include="Objects\CustomDataObjects\CommunitySettings.cs" />
+    <Compile Include="Objects\Helpers\CustomDataObject.cs" />
     <Compile Include="Objects\Helpers\EncompassHelper.cs" />
-    <Compile Include="Objects\Helpers\FilterCDOHelper.cs" />
-    <Compile Include="Objects\Helpers\PipelineFilterCDO.cs" />
-    <Compile Include="Objects\Helpers\PipelineFilterCDORoot.cs" />
+    <Compile Include="Objects\CustomDataObjects\PipelineFilterCDO.cs" />
     <Compile Include="Objects\Helpers\Reflect.cs" />
-    <Compile Include="Objects\Helpers\RuleCDOHelper.cs" />
-    <Compile Include="Objects\Helpers\VIPCDO.cs" />
+    <Compile Include="Objects\CustomDataObjects\VIPCDO.cs" />
     <Compile Include="Objects\Interface\AbstractControlDescriptionProvider.cs" />
     <Compile Include="Objects\Interface\IAnalysisBase.cs" />
     <Compile Include="Objects\Interface\IBeforeCommit.cs" />
@@ -320,14 +319,12 @@
     </Compile>
     <Compile Include="Objects\Models\AnalysisBase.cs" />
     <Compile Include="Objects\Models\AnalysisResult.cs" />
-    <Compile Include="Objects\Models\AutoMailerCDORoot.cs" />
     <Compile Include="Objects\Models\BlockingCollectionQueue.cs" />
     <Compile Include="Objects\Models\BusRule.cs" />
-    <Compile Include="Objects\Models\CDO.cs" />
     <Compile Include="Objects\Models\CloneBizRuleInfo.cs" />
     <Compile Include="Objects\Models\EncompassFieldInfo.cs" />
     <Compile Include="Objects\Models\EncompassLog.cs" />
-    <Compile Include="Objects\Models\FilterCDO.cs" />
+    <Compile Include="Objects\CustomDataObjects\FilterCDO.cs" />
     <Compile Include="Objects\Models\IFBLog.cs" />
     <Compile Include="Objects\Models\InputForm.cs" />
     <Compile Include="Objects\Models\InputFormControl.cs" />
@@ -336,16 +333,13 @@
     <Compile Include="Objects\Models\MailTrigger.cs" />
     <Compile Include="Objects\Models\PersonaResult.cs" />
     <Compile Include="Objects\Models\PipelineFilter.cs" />
-    <Compile Include="Objects\Models\PluginSettings.cs" />
     <Compile Include="Objects\Models\ReportResult.cs" />
-    <Compile Include="Objects\Models\RuleLockCDO.cs" />
+    <Compile Include="Objects\CustomDataObjects\RuleLockCDO.cs" />
     <Compile Include="Objects\Models\RuleLockInfo.cs" />
     <Compile Include="Objects\Models\HomeCounselor.cs" />
     <Compile Include="Objects\Models\PluginAccessRight.cs" />
     <Compile Include="Objects\Models\SearchResult.cs" />
     <Compile Include="Objects\Models\SearchResultField.cs" />
-    <Compile Include="Objects\Models\SettingsCDO.cs" />
-    <Compile Include="Objects\Models\VIPRoot.cs" />
     <Compile Include="Objects\Plugin.cs" />
     <Compile Include="Objects\ImplementationException.cs" />
     <Compile Include="Objects\Logger.cs" />
@@ -378,7 +372,9 @@
     <Compile Include="Standard Plugins\OpenInputForm.cs" />
     <Compile Include="Standard Plugins\VirtualFields.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Objects\BaseClasses\" />
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Non Native Modifications\Pipeline\ReassignmentDialog.resx">
       <DependentUpon>ReassignmentDialog.cs</DependentUpon>

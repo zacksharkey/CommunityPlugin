@@ -23,7 +23,7 @@ namespace CommunityPlugin.Non_Native_Modifications
 
         public override bool Authorized()
         {
-            return PluginAccess.CheckAccess(nameof(BackAndForward), false, false);
+            return PluginAccess.CheckAccess(nameof(BackAndForward));
         }
 
         public override void Login(object sender, EventArgs e) { }

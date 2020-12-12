@@ -1,7 +1,7 @@
 ﻿using CommunityPlugin.Objects;
+using CommunityPlugin.Objects.CustomDataObjects;
 using CommunityPlugin.Objects.Helpers;
 using CommunityPlugin.Objects.Interface;
-using CommunityPlugin.Objects.Models;
 using EllieMae.EMLite.Common.UI;
 using EllieMae.EMLite.DataEngine;
 using EllieMae.EMLite.RemotingServices;
@@ -10,10 +10,7 @@ using EllieMae.Encompass.Automation;
 using EllieMae.Encompass.BusinessObjects.Users;
 using EllieMae.Encompass.Collections;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CommunityPlugin.Non_Native_Modifications
@@ -48,7 +45,7 @@ namespace CommunityPlugin.Non_Native_Modifications
 
         private void GridView_ItemDoubleClick(object source, GVItemEventArgs e)
         {
-            VIPRoot cdo = VIPCDO.CDO;
+            VIPCDO cdo = CustomDataObject.Get<VIPCDO>(VIPCDO.Key);
 
             if (cdo.Loans.Contains(EncompassApplication.CurrentLoan.Guid))
             {
@@ -71,7 +68,7 @@ namespace CommunityPlugin.Non_Native_Modifications
             ToolStripItem vip = menu.Items.Cast<ToolStripItem>().Where(x => x.Text.Contains(nameof(VIP))).FirstOrDefault();
             if (vip != null)
             {
-                VIPRoot cdo = VIPCDO.CDO;
+                VIPCDO cdo = CustomDataObject.Get<VIPCDO>(VIPCDO.Key);
                 GVItem selected = FormWrapper.GetPipeline().SelectedItems.FirstOrDefault();
                 vip.Text = "Mark As VIP";
 
@@ -90,15 +87,15 @@ namespace CommunityPlugin.Non_Native_Modifications
         private void Item_Click(object sender, EventArgs e)
         {
             GridView gridView = FormWrapper.GetPipeline();
-            VIPRoot cdo = VIPCDO.CDO;
+            VIPCDO cdo = CustomDataObject.Get<VIPCDO>(VIPCDO.Key);
             string guid = (gridView.SelectedItems.FirstOrDefault().Tag as PipelineInfo).GUID;
             if (cdo.Loans.Contains(guid))
                 cdo.Loans.Remove(guid);
             else
                 cdo.Loans.Add(guid);
 
-            VIPCDO.UpdateCDO(cdo);
-            VIPCDO.UploadCDO();
+
+            CustomDataObject.Save<VIPCDO>(VIPCDO.Key, cdo);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using CommunityPlugin.Non_Native_Modifications.TopMenu;
+using CommunityPlugin.Objects.CustomDataObjects;
 using CommunityPlugin.Objects.Helpers;
 using CommunityPlugin.Objects.Interface;
 using CommunityPlugin.Objects.Models;
@@ -14,12 +15,13 @@ namespace CommunityPlugin.Objects
 {
     public partial class AccessControl : UserControl
     {
+        private CommunitySettings CDO = CustomDataObject.Get<CommunitySettings>(CommunitySettings.Key);
         public AccessControl()
         {
             InitializeComponent();
             InterfaceHelper ih = new InterfaceHelper();
-            comboBox1.Items.AddRange(ih.GetAll(typeof(Plugin)).Select(x => x.Name).ToArray());
-            comboBox1.Items.AddRange(ih.GetAll(typeof(MenuItemBase)).Select(x => x.Name).ToArray());
+            comboBox1.Items.AddRange(ih.GetAll(typeof(Plugin)).Select(x => x.Name).OrderBy(x=>x).ToArray());
+            comboBox1.Items.AddRange(ih.GetAll(typeof(MenuItemBase)).Select(x => x.Name).OrderBy(x => x).ToArray());
             comboBox1.SelectedIndex = 0;
             comboBox1.TextChanged += ComboBox1_TextChanged;
             cbPersonas.Items.AddRange(EncompassApplication.Session.Users.Personas.Cast<EllieMae.Encompass.BusinessObjects.Users.Persona>().Select(x => x.Name).ToArray());
@@ -29,45 +31,34 @@ namespace CommunityPlugin.Objects
         private void ComboBox1_TextChanged(object sender, EventArgs e)
         {
             string Name = comboBox1.Text;
-            CDO cdo = CDOHelper.CDO;
-            Dictionary<string, PluginSettings> plugins = cdo.CommunitySettings.Plugins;
-            bool flag = plugins.ContainsKey(Name);
-            PluginSettings settings = flag ? plugins[Name] : null;
-            chkAllAccess.Checked = flag ? settings.Permissions.Everyone : false;
+            List<PluginAccessRight> plugins = CDO.Rights;
+            PluginAccessRight right = CDO.Rights.FirstOrDefault(x => x.PluginName.Equals(Name));
+            bool newRight = right == null;
+            chkAllAccess.Checked = newRight ? false : right.AllAccess;
             for (int i = 0; i < cbPersonas.Items.Count; i++)
-            {
-                if(flag)
-                    cbPersonas.SetItemChecked(i, settings.Permissions.Personas.Contains(cbPersonas.Items[i]));
-                else
-                    cbPersonas.SetItemChecked(i, false);
-            }
+                cbPersonas.SetItemChecked(i, newRight ? false : right.Personas.Contains(cbPersonas.Items[i]));
+
             for (int i = 0; i < cbUsers.Items.Count; i++)
-            {
-                if (flag)
-                    cbUsers.SetItemChecked(i, settings.Permissions.UserIDs.Contains(cbUsers.Items[i]));
-                else
-                    cbUsers.SetItemChecked(i, false);
-            }
+                cbUsers.SetItemChecked(i, newRight ? false : right.UserIDs.Contains(cbUsers.Items[i]));
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
             string Name = comboBox1.Text;
-            CDO cdo = CDOHelper.CDO;
-            Dictionary<string, PluginSettings> plugins = cdo.CommunitySettings.Plugins;
+            PluginAccessRight right = CDO.Rights.FirstOrDefault(x => x.PluginName.Equals(Name));
+            if(right == null)
+            {
+                right = new PluginAccessRight();
+                right.PluginName = Name;
+                CDO.Rights.Add(right);
+            }
 
-            bool flag = plugins.ContainsKey(Name);
-            PluginSettings settings = flag ? plugins[Name] : new PluginSettings();
-            settings.Permissions.Everyone = chkAllAccess.Checked;
-            settings.Permissions.Personas = cbPersonas.CheckedItems.OfType<string>().ToList();
-            settings.Permissions.UserIDs = cbUsers.CheckedItems.OfType<string>().ToList();
-            if (!flag)
-                cdo.CommunitySettings.Plugins.Add(Name, settings);
+            right.AllAccess = chkAllAccess.Checked;
+            right.Personas = cbPersonas.CheckedItems.OfType<string>().ToList();
+            right.UserIDs = cbUsers.CheckedItems.OfType<string>().ToList();
 
-            CDOHelper.UpdateCDO(cdo);
-            CDOHelper.UploadCDO();
-            MessageBox.Show($"{settings.PluginName} Saved");
-
+            CustomDataObject.Save<CommunitySettings>(CommunitySettings.Key, CDO);
+            MessageBox.Show($"{CommunitySettings.Key} Saved");
         }
     }
 }

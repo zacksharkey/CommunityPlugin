@@ -27,7 +27,7 @@ namespace CommunityPlugin.Non_Native_Modifications.SideMenu.UserControls
         private List<SearchResultField> results;
         public override bool CanRun()
         {
-            return PluginAccess.CheckAccess(nameof(FieldLookup), true);
+            return PluginAccess.CheckAccess(nameof(FieldLookup));
         }
 
         public override bool CanShow()
