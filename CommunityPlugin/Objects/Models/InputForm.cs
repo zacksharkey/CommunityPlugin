@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -12,6 +13,7 @@ namespace CommunityPlugin.Objects.Models
 {
     public class InputForm
     {
+        private System.Windows.Forms.HtmlDocument CurrentDocument;
         private InputFormInfo _formInfo;
         private string _formData;
 
@@ -29,7 +31,7 @@ namespace CommunityPlugin.Objects.Models
             LoadData(sos);
         }
 
-        public System.Windows.Forms.HtmlDocument GetHtmlDocument(string html)
+        public void GetHtmlDocument(string html)
         {
             WebBrowser browser = new WebBrowser();
             browser.ScriptErrorsSuppressed = true;
@@ -37,7 +39,58 @@ namespace CommunityPlugin.Objects.Models
             browser.Document.OpenNew(true);
             browser.Document.Write(html);
             browser.Refresh();
-            return browser.Document;
+            CurrentDocument = browser.Document;
+            if (CurrentDocument == null)
+                return;
+            List<HtmlElement> elements = new List<HtmlElement>();
+            foreach (HtmlElement item in CurrentDocument.Body.Children)
+            {
+                elements.Add(item);
+                if (item.CanHaveChildren)
+                {
+                    var collectionElemetns = GetHtmlElements(item.Children);
+                    elements.AddRange(collectionElemetns);
+                }
+            }
+
+            foreach (var item in elements)
+            {
+                string encompassFieldID = item.GetAttribute("emid");
+                if (string.IsNullOrEmpty(encompassFieldID) == false)
+                {
+                    string controlID = item.GetAttribute("fieldId");
+                    string controlType = item.GetAttribute("type");
+
+                    FormControls.Add(
+                        new InputFormControl()
+                        {
+                            EncompassFormName = this.FormName,
+                            LoanFieldID = encompassFieldID,
+                            ObjectControlID = controlID,
+                            ObjectControlType = controlType
+                        }); ;
+                }
+
+
+                string eventType = item.GetAttribute("event");
+                if (string.IsNullOrEmpty(eventType) == false)
+                {
+                    string eventLocation = item.GetAttribute("for");
+                    string code = item.InnerHtml;
+                    if (string.IsNullOrEmpty(code) == false)
+                    {
+                        FormEvents.Add(
+                            new InputFormEvent()
+                            {
+                                EncompassFormName = this.FormName,
+                                EventType = eventType,
+                                EventLocationId = eventLocation,
+                                CustomCode = code
+                            });
+                    }
+                }
+            }
+
         }
 
         private void LoadData(SessionObjects sos)
@@ -47,63 +100,15 @@ namespace CommunityPlugin.Objects.Models
 
             try
             {
-                var htmlDoc = GetHtmlDocument(_formData);
-
-                List<HtmlElement> elements = new List<HtmlElement>();
-                foreach (HtmlElement item in htmlDoc.Body.Children)
-                {
-                    elements.Add(item);
-                    if (item.CanHaveChildren)
-                    {
-                        var collectionElemetns = GetHtmlElements(item.Children);
-                        elements.AddRange(collectionElemetns);
-                    }
-                }
-
-                foreach (var item in elements)
-                {
-                    string encompassFieldID = item.GetAttribute("emid");
-                    if (string.IsNullOrEmpty(encompassFieldID) == false)
-                    {
-                        string controlID = item.GetAttribute("fieldId");
-                        string controlType = item.GetAttribute("type");
-
-                        FormControls.Add(
-                            new InputFormControl()
-                            {
-                                EncompassFormName = this.FormName,
-                                LoanFieldID = encompassFieldID,
-                                ObjectControlID = controlID,
-                                ObjectControlType = controlType
-                            }); ;
-                    }
-
-
-                    string eventType = item.GetAttribute("event");
-                    if (string.IsNullOrEmpty(eventType) == false)
-                    {
-                        string eventLocation = item.GetAttribute("for");
-                        string code = item.InnerHtml;
-                        if (string.IsNullOrEmpty(code) == false)
-                        {
-                            FormEvents.Add(
-                                new InputFormEvent()
-                                {
-                                    EncompassFormName = this.FormName,
-                                    EventType = eventType,
-                                    EventLocationId = eventLocation,
-                                    CustomCode = code
-                                });
-                        }
-                    }
-                }
-
+                Thread t = new Thread(() => GetHtmlDocument(_formData));
+                t.SetApartmentState(ApartmentState.STA);
+                t.Start();
+                t.Join();
             }
             catch (Exception ex)
             {
-
+                Logger.HandleError(ex, nameof(InputForm));
             }
-  
         }
 
         private static List<HtmlElement> GetHtmlElements(HtmlElementCollection collection)

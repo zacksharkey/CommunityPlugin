@@ -23,7 +23,6 @@ namespace CommunityPlugin.Non_Native_Modifications
         public override void Login(object sender, EventArgs e)
         {
             HostWin f = new HostWin();
-           
         }
     }
 }

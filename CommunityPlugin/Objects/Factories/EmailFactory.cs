@@ -22,8 +22,8 @@ namespace CommunityPlugin.Objects.Factories
     {
         public List<ITask> GetTriggers()
         {
-            AutoMailerCDORoot cdo = AutoMailerCDO.CDO;
-            List<MailTrigger> Triggers = cdo.Triggers;
+            AutoMailerCDO cdo = CustomDataObject.Get<AutoMailerCDO>(AutoMailerCDO.Key);
+            List<MailTrigger> Triggers = cdo.Triggers; 
 
             List<ITask> result = new List<ITask>();
 

@@ -1,4 +1,5 @@
 ﻿using CommunityPlugin.Objects;
+using CommunityPlugin.Objects.CustomDataObjects;
 using CommunityPlugin.Objects.Helpers;
 using CommunityPlugin.Objects.Interface;
 using CommunityPlugin.Objects.Models;
@@ -16,11 +17,11 @@ namespace CommunityPlugin.Non_Native_Modifications.SideMenu.UserControls
     {
         private System.Windows.Forms.DataGridView dataGridView1;
 
-        private Dictionary<string,string> Fields => CDOHelper.CDO.CommunitySettings.LoanInformation == null ? new Dictionary<string, string>(): CDOHelper.CDO.CommunitySettings.LoanInformation.ContainsKey(EncompassHelper.LastPersona) ? CDOHelper.CDO.CommunitySettings.LoanInformation[EncompassHelper.LastPersona] : CDOHelper.CDO.CommunitySettings.LoanInformation["Default"];
+        private Dictionary<string, string> Fields { get; set; }
         private Dictionary<string, EncompassFieldInfo> InfoLines => Fields.ToDictionary(x => x.Key.ToString(), x => new EncompassFieldInfo(x.Key, x.Value), StringComparer.OrdinalIgnoreCase);
         public override bool CanRun()
         {
-            return PluginAccess.CheckAccess(nameof(LoanInformation), true);
+            return PluginAccess.CheckAccess(nameof(LoanInformation));
         }
 
         public override bool CanShow()
@@ -30,6 +31,8 @@ namespace CommunityPlugin.Non_Native_Modifications.SideMenu.UserControls
         public LoanInformation()
         {
             InitializeComponent();
+            CommunitySettings cdo = CustomDataObject.Get<CommunitySettings>(CommunitySettings.Key);
+            Fields = cdo.LoanInformation == null  || cdo.LoanInformation.Count.Equals(0) ? new Dictionary<string, string>() : cdo.LoanInformation.ContainsKey(EncompassHelper.LastPersona) ? cdo.LoanInformation[EncompassHelper.LastPersona] : cdo.LoanInformation["Default"];
             RefreshInfo();
         }
 

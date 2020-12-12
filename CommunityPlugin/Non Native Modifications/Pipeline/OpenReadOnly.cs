@@ -17,7 +17,7 @@ namespace CommunityPlugin.Non_Native_Modifications.Pipeline
 
         public override bool Authorized()  
         {
-            return PluginAccess.CheckAccess(nameof(OpenReadOnly), false, false);
+            return PluginAccess.CheckAccess(nameof(OpenReadOnly));
         }
 
         public override void PipelineTabChanged(object sender, EventArgs e)

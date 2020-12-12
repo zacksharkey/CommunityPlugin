@@ -1,5 +1,6 @@
 ﻿using CommunityPlugin.Objects;
 using CommunityPlugin.Objects.Args;
+using CommunityPlugin.Objects.CustomDataObjects;
 using CommunityPlugin.Objects.Extension;
 using CommunityPlugin.Objects.Helpers;
 using CommunityPlugin.Objects.Interface;
@@ -40,12 +41,10 @@ namespace CommunityPlugin.Non_Native_Modifications
                 NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore
             });
 
-            RuleLockCDO cdo = RuleCDOHelper.CDO;
-            if (cdo.Rules == null)
-                cdo.Rules = new List<RuleLockInfo>();
+
+            RuleLockCDO cdo = CustomDataObject.Get<RuleLockCDO>(RuleLockCDO.Key);
             cdo.Rules.Add(info);
-            RuleCDOHelper.UpdateCDO(cdo);
-            RuleCDOHelper.UploadCDO();
+            CustomDataObject.Save<RuleLockCDO>(RuleLockCDO.Key, cdo);
         }
 
         public override void NativeFormLoaded(object sender, FormOpenedArgs e)
@@ -54,8 +53,7 @@ namespace CommunityPlugin.Non_Native_Modifications
             if (openedForm == null || (openedForm.IsDisposed || !openedForm.Text.Contains("Trigger")))
                 return;
 
-            RuleCDOHelper.DownloadCDO();
-            RuleLockCDO cdo = RuleCDOHelper.CDO;
+            RuleLockCDO cdo = CustomDataObject.Get<RuleLockCDO>(RuleLockCDO.Key);
             int id = ((EllieMae.EMLite.Setup.TriggerEditor)openedForm.ActiveControl.TopLevelControl).Trigger.RuleID;
             RuleLockInfo locked = cdo.Rules?.FirstOrDefault(x => x.RuleID.Equals(id)) ?? (RuleLockInfo)null;
 

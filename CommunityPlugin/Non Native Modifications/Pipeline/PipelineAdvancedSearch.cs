@@ -1,4 +1,5 @@
 ﻿using CommunityPlugin.Objects;
+using CommunityPlugin.Objects.CustomDataObjects;
 using CommunityPlugin.Objects.Helpers;
 using CommunityPlugin.Objects.Interface;
 using CommunityPlugin.Objects.Models;
@@ -21,6 +22,7 @@ namespace CommunityPlugin.Non_Native_Modifications.Pipeline
         private ComboBox Filter;
         private CheckedComboBox Folder;
         private ComboBox View;
+        private PipelineFilterCDO cdo;
         public override bool Authorized()
         {
             return PluginAccess.CheckAccess(nameof(PipelineAdvancedSearch));
@@ -28,7 +30,7 @@ namespace CommunityPlugin.Non_Native_Modifications.Pipeline
 
         public override void PipelineTabChanged(object sender, EventArgs e)
         {
-            PipelineFilterCDORoot cdo = PipelineFilterCDO.CDO;
+            cdo = CustomDataObject.Get<PipelineFilterCDO>(PipelineFilterCDO.Key);
             if (cdo == null)
                 return;
 
@@ -75,7 +77,7 @@ namespace CommunityPlugin.Non_Native_Modifications.Pipeline
         {
             ComboBox combo = sender as ComboBox;
             PipelineScreen mainScreen = FormWrapper.EncompassForm.Controls.Find("pipelineScreen", true)[0] as PipelineScreen;
-            PipelineFilter filter = PipelineFilterCDO.CDO.Filters.Where(x => x.Name.Equals(combo.Text)).FirstOrDefault();
+            PipelineFilter filter = cdo.Filters.Where(x => x.Name.Equals(combo.Text)).FirstOrDefault();
             mainScreen.SetCurrentFilter(filter.Filter, 1);
 
             ClientCommonUtils.UncheckLoanFolders(this.Folder, Folder.CheckedItems.Cast<ComboBoxItem>().ToList());
@@ -104,7 +106,6 @@ namespace CommunityPlugin.Non_Native_Modifications.Pipeline
             PipelineScreen mainScreen = FormWrapper.EncompassForm.Controls.Find("pipelineScreen", true)[0] as PipelineScreen;
             FieldFilterList filter = mainScreen.GetCurrentFilter();
 
-            PipelineFilterCDORoot cdo = PipelineFilterCDO.CDO;
             cdo.Filters.Add(new PipelineFilter()
             {
                 Name = Filter.Text,
@@ -115,8 +116,7 @@ namespace CommunityPlugin.Non_Native_Modifications.Pipeline
                 PipelineView = View.Text
             });
 
-            PipelineFilterCDO.UpdateCDO(cdo);
-            PipelineFilterCDO.UploadCDO();
+            CustomDataObject.Save<PipelineFilterCDO>(PipelineFilterCDO.Key, cdo);
             LoadFilters(Filter);
             Filter.Text = string.Empty;
         }
@@ -124,7 +124,7 @@ namespace CommunityPlugin.Non_Native_Modifications.Pipeline
         private void LoadFilters(ComboBox Filter)
         {
             Filter.Items.Clear();
-            Filter.Items.AddRange(PipelineFilterCDO.CDO.Filters.Where(x => x.Public && x.PipelineView.Equals(View.Text) || (!x.Public && x.Owner.Equals(EncompassHelper.User.ID) && x.PipelineView.Equals(View.Text))).Select(x => x.Name).ToArray());
+            Filter.Items.AddRange(cdo.Filters.Where(x => x.Public && x.PipelineView.Equals(View.Text) || (!x.Public && x.Owner.Equals(EncompassHelper.User.ID) && x.PipelineView.Equals(View.Text))).Select(x => x.Name).ToArray());
         }
 
         private string GetSelectedFolderList()

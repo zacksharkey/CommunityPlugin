@@ -1,15 +1,15 @@
 ﻿using CommunityPlugin.Objects.Models;
-using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace CommunityPlugin.Objects.Helpers
+namespace CommunityPlugin.Objects.CustomDataObjects
 {
-    public class PipelineFilterCDORoot
+    public class PipelineFilterCDO
     {
-        [JsonProperty("Filters")]
+        public static string Key = $"{nameof(PipelineFilterCDO)}.json";
+
         public List<PipelineFilter> Filters { get; set; }
 
-        public PipelineFilterCDORoot()
+        public PipelineFilterCDO()
         {
             Filters = new List<PipelineFilter>();
         }

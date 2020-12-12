@@ -49,17 +49,17 @@ namespace CommunityPlugin.Non_Native_Modifications.TopMenu.AnalysisTools
 
         private void Recurse(FileSystemEntry Entry, ReportIFSExplorer IFSExplorer)
         {
-            if(Entry.Type.Equals(FileSystemEntry.Types.File))
+            if (Entry.Type.Equals(FileSystemEntry.Types.File))
             {
                 ReportSettings settings = Session.ReportManager.GetReportSettings(Entry);
-                if(settings.Columns != null)
-                    ReportResults.AddRange(settings.Columns.Select(x => new ReportResult() 
-                                                           { 
-                                                               Columns = settings.Columns,
-                                                               Name = Entry.Name, 
-                                                               Path = Entry.Path, 
-                                                               MatchingProperty = "Column" 
-                                                           }));
+                if (settings.Columns != null)
+                    ReportResults.Add(new ReportResult()
+                    {
+                        Columns = settings.Columns,
+                        Name = Entry.Name,
+                        Path = Entry.Path,
+                        MatchingProperty = "Column"
+                    });
             
 
                 if(settings.Filters != null) 

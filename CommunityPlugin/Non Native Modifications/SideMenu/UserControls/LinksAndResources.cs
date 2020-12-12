@@ -1,23 +1,23 @@
 ﻿using CommunityPlugin.Non_Native_Modifications.SideMenu.Controls;
 using CommunityPlugin.Objects;
-using CommunityPlugin.Objects.Enums;
 using CommunityPlugin.Objects.Helpers;
+using CommunityPlugin.Objects.Enums;
 using CommunityPlugin.Objects.Interface;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using CommunityPlugin.Objects.CustomDataObjects;
 
 namespace CommunityPlugin.Non_Native_Modifications.SideMenu.UserControls
 {
     public class LinksAndResources : LoanMenuControl
     {
-        private Dictionary<string, Dictionary<string, string>> Links => CDOHelper.CDO.CommunitySettings.Links == null ? new Dictionary<string, Dictionary<string, string>>() : CDOHelper.CDO.CommunitySettings.Links.ContainsKey(EncompassHelper.LastPersona) ? CDOHelper.CDO.CommunitySettings.Links[EncompassHelper.LastPersona] : CDOHelper.CDO.CommunitySettings.Links["Default"];
+        public Dictionary<string, Dictionary<string, string>> Links { get; set; }
         private FlowLayoutPanel layout;
         public override bool CanRun()
         {
-            return PluginAccess.CheckAccess(nameof(LinksAndResources), true);
+            return PluginAccess.CheckAccess(nameof(LinksAndResources));
         }
 
         public override bool CanShow()
@@ -28,6 +28,8 @@ namespace CommunityPlugin.Non_Native_Modifications.SideMenu.UserControls
         public LinksAndResources()
         {
             RefreshControl();
+            CommunitySettings cdo = CustomDataObject.Get<CommunitySettings>(CommunitySettings.Key);
+            Links = cdo.Links == null || cdo.Links.Count.Equals(0) ? new Dictionary<string, Dictionary<string, string>>() : cdo.Links.ContainsKey(EncompassHelper.LastPersona) ? cdo.Links[EncompassHelper.LastPersona] : cdo.Links["Default"];
         }
         private void RefreshControl()
         {
@@ -54,6 +56,8 @@ namespace CommunityPlugin.Non_Native_Modifications.SideMenu.UserControls
         private List<CustomLinkLabel> GetLinkLabels()
         {
             List<CustomLinkLabel> result = new List<CustomLinkLabel>();
+            if (Links == null)
+                return result;
 
             foreach(KeyValuePair<string, Dictionary<string, string>> kvp in Links)
             {
