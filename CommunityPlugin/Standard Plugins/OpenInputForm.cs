@@ -21,11 +21,6 @@ namespace CommunityPlugin.Standard_Plugins
         private bool Open = false;
         private bool HasFields = false;
 
-        public override bool Authorized()
-        {
-            return PluginAccess.CheckAccess(nameof(OpenInputForm));
-        }
-
         public override void LoanOpened(object sender, EventArgs e)
         {
             HasFields = EncompassApplication.Session.Loans.FieldDescriptors.CustomFields.Cast<FieldDescriptor>().Any(x => x.FieldID.Equals("CX.OPENFORM"))

@@ -12,11 +12,6 @@ namespace CommunityPlugin.Non_Native_Modifications
 {
     public class PrintFormToEfolder : Plugin, ILoanOpened
     {
-        public override bool Authorized()
-        {
-            return PluginAccess.CheckAccess(nameof(PrintFormToEfolder));
-        }
-
         public override void LoanOpened(object sender, EventArgs e)
         {
           

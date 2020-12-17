@@ -20,11 +20,6 @@ namespace CommunityPlugin.Non_Native_Modifications
         private Form SettingsForm;
         private GridView folders;
 
-        public override bool Authorized()
-        {
-            return PluginAccess.CheckAccess(nameof(LoanCount));
-        }
-
         public override void NativeFormLoaded(object sender, FormOpenedArgs e)
         {
             Form openedForm = e.OpenForm;

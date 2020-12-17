@@ -18,12 +18,6 @@ namespace CommunityPlugin.Standard_Plugins
     public class OpeneFolderDocument : Plugin, IFieldChange, ILoanOpened
     {
         private string DocumentName;
-
-        public override bool Authorized()
-        {
-            return PluginAccess.CheckAccess(nameof(OpeneFolderDocument));
-        }
-
         public override void LoanOpened(object sender, EventArgs e)
         {
 

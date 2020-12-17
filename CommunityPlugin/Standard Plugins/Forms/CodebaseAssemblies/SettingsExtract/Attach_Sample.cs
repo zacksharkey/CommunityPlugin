@@ -6,11 +6,6 @@ namespace CommunityPlugin.Standard_Plugins.Forms.CodebaseAssemblies.SettingsExtr
 {
     public class Attach_Sample : Plugin, ILogin
     {
-        public override bool Authorized()
-        {
-            return PluginAccess.CheckAccess(nameof(Attach_Sample));
-            
-        }
 
         public override void Run()
         {

@@ -21,11 +21,6 @@ namespace CommunityPlugin.Non_Native_Modifications
         private Panel InputFormsPanel;
         private string CurrentForm;
 
-        public override bool Authorized()
-        {
-            return PluginAccess.CheckAccess(nameof(BackAndForward));
-        }
-
         public override void Login(object sender, EventArgs e) { }
 
         public override void LoanTabChanged(object sender, EventArgs e)

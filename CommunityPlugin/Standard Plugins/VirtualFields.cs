@@ -18,10 +18,6 @@ namespace CommunityPlugin.Standard_Plugins
         private List<FieldDescriptor> DocAttachmentFields;
         private bool CanRun = false;
 
-        public override bool Authorized()
-        {
-            return PluginAccess.CheckAccess(nameof(VirtualFields));
-        }
 
         public override void LoanOpened(object sender, EventArgs e)
         {

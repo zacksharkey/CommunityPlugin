@@ -9,11 +9,6 @@ namespace CommunityPlugin.Non_Native_Modifications
 {
     public class PipelineColor : Plugin, IPipelineTabChanged
     {
-        public override bool Authorized()
-        {
-            return PluginAccess.CheckAccess(nameof(PipelineColor));
-        }
-
         public override void PipelineTabChanged(object sender, EventArgs e)
         {
             try

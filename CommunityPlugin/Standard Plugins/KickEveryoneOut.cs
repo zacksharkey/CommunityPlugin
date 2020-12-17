@@ -20,11 +20,6 @@ namespace CommunityPlugin.Standard_Plugins
     {
         private Timer Timer = null;
         private DateTime Started = DateTime.MinValue;
-        public override bool Authorized()
-        {
-            return PluginAccess.CheckAccess(nameof(KickEveryoneOut));
-        }
-
         public override void Login(object sender, EventArgs e)
         {
             if (!EncompassHelper.IsSuper && Timer == null)

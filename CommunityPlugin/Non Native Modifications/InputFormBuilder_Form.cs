@@ -15,13 +15,12 @@ namespace CommunityPlugin.Non_Native_Modifications
 {
     public class InputFormBuilder_Form : Plugin, ILogin, INativeFormLoaded
     {
-        public override bool Authorized()
-        {
-            return false;
-        }
 
         public override void Login(object sender, EventArgs e)
         {
+            return;
+
+
             HostWin f = new HostWin();
         }
     }

@@ -16,13 +16,6 @@ namespace CommunityPlugin.Standard_Plugins
         private BlockingCollectionQueue Producer;
         Timer t;
 
-        public override bool Authorized()
-        {
-            return PluginAccess.CheckAccess(nameof(Automator));
-            throw new NotImplementedException();
-        }
-
-
         public override void Login(object sender, EventArgs e)
         {
             if (!EncompassHelper.User.ID.Equals("Automator"))
