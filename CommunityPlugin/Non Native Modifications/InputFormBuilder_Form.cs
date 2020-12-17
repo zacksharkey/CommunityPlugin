@@ -23,7 +23,5 @@ namespace CommunityPlugin.Non_Native_Modifications
 
             HostWin f = new HostWin();
         }
-
-         
     }
 }
