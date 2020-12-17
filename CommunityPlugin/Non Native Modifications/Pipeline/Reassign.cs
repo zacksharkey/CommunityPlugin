@@ -10,10 +10,6 @@ namespace CommunityPlugin.Non_Native_Modifications.Pipeline
 {
     public class Reassign : Plugin, IPipelineTabChanged
     {
-        public override bool Authorized()
-        {
-            return PluginAccess.CheckAccess(nameof(Reassign));
-        }
 
         public override void PipelineTabChanged(object sender, EventArgs e)
         {

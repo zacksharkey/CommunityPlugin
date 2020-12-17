@@ -12,10 +12,7 @@ namespace CommunityPlugin.Non_Native_Modifications
 {
     public class GridSearch : Plugin, ILogin
     {
-        public override bool Authorized()
-        {
-            return PluginAccess.CheckAccess(nameof(GridSearch));
-        }
+
         private string key = "flpSearch";
         private TreeView Tree;
         private Form SettingsForm;

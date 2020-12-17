@@ -9,9 +9,5 @@ namespace CommunityPlugin.Standard_Plugins
 {
     public class LiveTestUser : Plugin
     {
-        public override bool Authorized()
-        {
-            return PluginAccess.CheckAccess(nameof(LiveTestUser));
-        }
     }
 }

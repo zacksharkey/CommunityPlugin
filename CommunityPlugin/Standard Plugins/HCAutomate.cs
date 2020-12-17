@@ -16,12 +16,6 @@ namespace CommunityPlugin.Standard_Plugins
 {
     public class HCAutomate : Plugin, IFieldChange, ILoanOpened
     {
-        public override bool Authorized()
-        {
-            return PluginAccess.CheckAccess(nameof(HCAutomate));
-        }
-
-
         private void ClearAndUpdateData()
         {
             GeoCoordinate coordinates = Coordinates();

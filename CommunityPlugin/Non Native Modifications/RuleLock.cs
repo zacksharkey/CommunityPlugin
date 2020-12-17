@@ -24,10 +24,6 @@ namespace CommunityPlugin.Non_Native_Modifications
         private bool ConcurrentUser => EncompassHelper.User.ID.Equals("rulelock");
         private CheckBox Locked;
         private Form openedForm;
-        public override bool Authorized()
-        {
-            return PluginAccess.CheckAccess(nameof(RuleLock));
-        }
 
 
         public override void DataExchangeReceived(object sender, DataExchangeEventArgs e)

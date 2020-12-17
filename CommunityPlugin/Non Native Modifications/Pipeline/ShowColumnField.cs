@@ -10,12 +10,6 @@ namespace CommunityPlugin.Non_Native_Modifications.Pipeline
     public class ShowColumnField : Plugin, INativeFormLoaded
     {
         private GridView Grid;
-
-        public override bool Authorized()
-        {
-            return PluginAccess.CheckAccess(nameof(ShowColumnField));
-        }
-
         public override void NativeFormLoaded(object sender, FormOpenedArgs e)
         {
             if (e.OpenForm.Name.Equals("TableLayoutColumnSelector"))

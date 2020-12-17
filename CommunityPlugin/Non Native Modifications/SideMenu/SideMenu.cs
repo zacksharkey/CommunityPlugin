@@ -7,10 +7,6 @@ namespace CommunityPlugin.Non_Native_Modifications.SideMenu
 {
     public class SideMenu : Plugin, ITabChanged, ILoanTabChanged
     {
-        public override bool Authorized()
-        {
-            return PluginAccess.CheckAccess(nameof(SideMenu));
-        }
         public override void LoanTabChanged(object sender, EventArgs e)
         {
             SideMenuUI.CreateMenu(PluginAccess.CheckAccess(nameof(SideMenu)));

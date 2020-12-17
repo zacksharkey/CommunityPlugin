@@ -1,5 +1,6 @@
 ﻿using CommunityPlugin.Non_Native_Modifications;
 using CommunityPlugin.Objects.Args;
+using CommunityPlugin.Objects.Helpers;
 using CommunityPlugin.Objects.Interface;
 using EllieMae.Encompass.Automation;
 using EllieMae.Encompass.BusinessObjects;
@@ -12,11 +13,9 @@ namespace CommunityPlugin.Objects
 {
     public abstract class Plugin : IPlugin
     {
-        public abstract bool Authorized();
-
         public virtual void Run()
         {
-            if (!Authorized())
+            if (!PluginAccess.CheckAccess(GetType().Name))
                 return;
 
 
@@ -131,7 +130,7 @@ namespace CommunityPlugin.Objects
             //    EncompassHelper.LoanDataManager.LoanData.BeforeFieldChanged += Base_BeforeFieldChanged;
 
             //if (typeof(IBeforeFieldChanged).IsAssignableFrom(GetType()))
-            //    EncompassHelper.LoanDataManager.LoanData.BeforeTriggerRuleApplied += Base_BeforeFieldChanged;
+            //    EncompassHelper.LoanDataManager.LoanData.BeforeTriggerRuleApplied += Base_BeforeTriggerRuleApplied;
 
             //if (typeof(IDisclosure2015Created).IsAssignableFrom(GetType()))
             //    EncompassHelper.LoanDataManager.LoanData.Disclosure2015Created += Base_Disclosure2015Created;
@@ -149,10 +148,25 @@ namespace CommunityPlugin.Objects
             //    EncompassHelper.LoanDataManager.LoanData.RateLockRequested += Base_RateLockRequested;
 
             //if (typeof(IAfterDDMApplied).IsAssignableFrom(GetType()))
-            //    EncompassHelper.LoanDataManager.LoanData.AfterDDMApplied += Base_AfterDDMApplied;
+            //    EncompassHelper.LoanDataManager.LoanData.BeforeMilestoneCompleted += Base_AfterDDMApplied;
 
             //if (typeof(IExecuteEmailTriggers).IsAssignableFrom(GetType()))
             //    EncompassHelper.LoanDataManager.LoanData.ExecuteEmailTriggers += Base_ExecuteEmailTriggers;
+
+            //if (typeof(IAfterDDMApplied).IsAssignableFrom(GetType()))
+            //    EncompassHelper.LoanDataManager.LoanData.FormVersionChanged += Base_AfterDDMApplied;
+
+            //if (typeof(IAfterDDMApplied).IsAssignableFrom(GetType()))
+            //    EncompassHelper.LoanDataManager.LoanData.LockRequestFieldChanged += Base_AfterDDMApplied;
+
+            //if (typeof(IAfterDDMApplied).IsAssignableFrom(GetType()))
+            //    EncompassHelper.LoanDataManager.LoanData.RateLockDenied += Base_AfterDDMApplied;
+
+            //if (typeof(IAfterDDMApplied).IsAssignableFrom(GetType()))
+            //    EncompassHelper.LoanDataManager.LoanData.RateLockRequested += Base_AfterDDMApplied;
+
+            //if (typeof(IAfterDDMApplied).IsAssignableFrom(GetType()))
+            //    EncompassHelper.LoanDataManager.FieldRulesChanged += Base_AfterDDMApplied;
 
 
             LoanOpened(sender, e);

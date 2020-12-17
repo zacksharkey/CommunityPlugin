@@ -9,11 +9,6 @@ namespace CommunityPlugin.Standard_Plugins
 {
     public class AutomateInputFormSet : Plugin, ILoanOpened
     {
-        public override bool Authorized()
-        {
-            return PluginAccess.CheckAccess(nameof(AutomateInputFormSet));
-        }
-
         public override void LoanOpened(object sender, EventArgs e)
         {
             InputFormSet formSet = GetInputFormByPersona();

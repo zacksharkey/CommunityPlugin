@@ -15,11 +15,6 @@ namespace CommunityPlugin.Non_Native_Modifications
     {
         private string ServicesToDisable;
 
-        public override bool Authorized()
-        {
-            return PluginAccess.CheckAccess(nameof(DisableServices));
-        }
-
         public override void LoanTabChanged(object sender, EventArgs e)
         {
             bool shouldRun = EncompassApplication.Session.Loans.FieldDescriptors.CustomFields.Cast<FieldDescriptor>().Any(x => x.FieldID.Equals("CX.DISABLE.SERVICES"));

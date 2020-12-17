@@ -14,12 +14,6 @@ namespace CommunityPlugin.Non_Native_Modifications.Pipeline
     {
         private bool Added;
         private GridView PipelineGrid;
-
-        public override bool Authorized()  
-        {
-            return PluginAccess.CheckAccess(nameof(OpenReadOnly));
-        }
-
         public override void PipelineTabChanged(object sender, EventArgs e)
         {
             try

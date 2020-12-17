@@ -14,12 +14,6 @@ namespace CommunityPlugin.Non_Native_Modifications
     public class AppraiserDialog:Plugin, ILogin
     {
         private Form AppraiserDialogForm;
-
-        public override bool Authorized()
-        {
-            return PluginAccess.CheckAccess(nameof(AppraiserDialog));
-        }
-
         public override void Login(object sender, EventArgs e)
         {
             FormWrapper.FormOpened += FormWrapper_FormOpened; 

@@ -10,11 +10,6 @@ namespace CommunityPlugin.Non_Native_Modifications
     public class AlphaAlerts : Plugin, ILoanTabChanged
     {
         private bool Should => EncompassHelper.Val("CX.ALERTS.ALPHA").ToString().Equals("X");
-        public override bool Authorized()
-        {
-            return PluginAccess.CheckAccess(nameof(AlphaAlerts));
-        }
-
         public override void LoanTabChanged(object sender, EventArgs e)
         {
             Timer t = new Timer();

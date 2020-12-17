@@ -23,11 +23,6 @@ namespace CommunityPlugin.Non_Native_Modifications
         private bool SendOutOfFileMessage;
         private PipelineInfo Tag;
 
-        public override bool Authorized()
-        {
-            return PluginAccess.CheckAccess(nameof(Doorbell));
-        }
-
         public override void Login(object sender, EventArgs e)
         {
             DoorBellItem = new ToolStripMenuItem("DoorBell");

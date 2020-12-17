@@ -12,10 +12,6 @@ namespace CommunityPlugin.Non_Native_Modifications.TopMenu
     public class TopMenuBase : Plugin, ILogin
     {
         List<ToolStripItem> active;
-        public override bool Authorized()
-        {
-            return PluginAccess.CheckAccess(nameof(TopMenuBase));
-        }
 
         public override void Login(object sender, EventArgs e)
         {
