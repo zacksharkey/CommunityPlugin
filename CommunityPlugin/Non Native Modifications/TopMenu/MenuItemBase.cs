@@ -9,7 +9,6 @@ namespace CommunityPlugin.Non_Native_Modifications.TopMenu
     public abstract class MenuItemBase : IMenuItemBase
     {
         internal ToolStripMenuItem menuItem;
-        public abstract bool CanRun();
 
         public ToolStripItem CreateToolStripMenu(Image image, string Name)
         {

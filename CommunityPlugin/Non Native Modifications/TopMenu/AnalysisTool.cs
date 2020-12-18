@@ -5,10 +5,6 @@ namespace CommunityPlugin.Non_Native_Modifications.TopMenu
 {
     public class AnalysisTool : MenuItemBase
     {
-        public override bool CanRun()
-        {
-            return PluginAccess.CheckAccess(nameof(AnalysisTool));
-        }
 
         protected override void menuItem_Click(object sender, EventArgs e)
         {

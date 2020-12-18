@@ -30,7 +30,7 @@ namespace CommunityPlugin.Non_Native_Modifications.TopMenu
                 try
                 {
                     MenuItemBase menuItemBaseClass = Activator.CreateInstance(type) as MenuItemBase;
-                    if (menuItemBaseClass != null && menuItemBaseClass.CanRun() && this.active.FirstOrDefault<ToolStripItem>(x => x.GetType() == menuItemBaseClass.GetType()) == null)
+                    if (menuItemBaseClass != null && PluginAccess.CheckAccess(nameof(type.Name)) && this.active.FirstOrDefault<ToolStripItem>(x => x.GetType() == menuItemBaseClass.GetType()) == null)
                         this.active.Add(menuItemBaseClass.CreateToolStripMenu((Image)null, menuItemBaseClass.GetType().Name));
                 }
                 catch (Exception ex)
