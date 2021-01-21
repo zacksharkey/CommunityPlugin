@@ -5,7 +5,7 @@
 
 **Tutorials:**
 
-**The Framework Part 1** - https://youtu.be/9NosL2HwZWM <br>
+**The Framework Part 1** - https://youtu.be/9juibPIQZUg <br>
 **Installing the Plugin** - https://youtu.be/sA2pMGhBxeM <br>
 **Solutionizing Encompass** - https://youtu.be/gP2heVPHb08 <br>
 **Finding Field Calculations** - https://youtu.be/8T9deHoDOjw <br>
