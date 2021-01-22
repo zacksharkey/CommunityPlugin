@@ -9,11 +9,6 @@ namespace CommunityPlugin.Non_Native_Modifications.TopMenu
 {
     public class AdvancedSearchForm : MenuItemBase
     {
-        public override bool CanRun()
-        {
-            return PluginAccess.CheckAccess(nameof(AdvancedSearchForm));
-        }
-
         protected override void menuItem_Click(object sender, EventArgs e)
         {
             //Load CDO with filters LoanReportFieldDefs fieldDefs = null;

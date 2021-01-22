@@ -9,10 +9,6 @@ namespace CommunityPlugin.Non_Native_Modifications.TopMenu
 {
     public class Impersonate : MenuItemBase
     {
-        public override bool CanRun()
-        {
-            return PluginAccess.CheckAccess(nameof(Impersonate));
-        }
 
         protected override void menuItem_Click(object sender, EventArgs e)
         {
