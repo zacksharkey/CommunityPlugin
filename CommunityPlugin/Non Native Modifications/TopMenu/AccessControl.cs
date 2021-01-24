@@ -16,6 +16,7 @@ namespace CommunityPlugin.Objects
     public partial class AccessControl : UserControl
     {
         private CommunitySettings CDO = CustomDataObject.Get<CommunitySettings>(CommunitySettings.Key);
+        private PluginAccessRight right;
         public AccessControl()
         {
             InitializeComponent();
@@ -32,7 +33,7 @@ namespace CommunityPlugin.Objects
         {
             string Name = comboBox1.Text;
             List<PluginAccessRight> plugins = CDO.Rights;
-            PluginAccessRight right = CDO.Rights.FirstOrDefault(x => x.PluginName.Equals(Name));
+            right = CDO.Rights.FirstOrDefault(x => x.PluginName.Equals(Name));
             bool newRight = right == null;
             chkAllAccess.Checked = newRight ? false : right.AllAccess;
             for (int i = 0; i < cbPersonas.Items.Count; i++)
@@ -59,6 +60,19 @@ namespace CommunityPlugin.Objects
 
             CustomDataObject.Save<CommunitySettings>(CommunitySettings.Key, CDO);
             MessageBox.Show($"{CommunitySettings.Key} Saved");
+        }
+
+        private void btnConfig_Click(object sender, EventArgs e)
+        {
+            Plugin p = Global.ActivePlugins.Where(x => x.GetType().Name.Equals(comboBox1.Text)).FirstOrDefault();
+            if(p != null)
+            {
+                p.Configure();
+            }
+            else
+            {
+                MessageBox.Show("Did not find configuration for this plugin.");
+            }
         }
     }
 }
