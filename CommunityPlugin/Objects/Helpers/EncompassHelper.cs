@@ -18,11 +18,15 @@ using System.Net.Mail;
 using System.Windows.Forms;
 using Persona = EllieMae.Encompass.BusinessObjects.Users.Persona;
 using CommunityPlugin.Objects.CustomDataObjects;
+using EllieMae.Encompass.BusinessObjects.Loans.Logging;
+using CommunityPlugin.Objects.Interface;
+using CommunityPlugin.Objects.BaseClasses;
 
 namespace CommunityPlugin.Objects.Helpers  
 { 
     public static class EncompassHelper
     {
+        public static Loan CurrentLoan => EncompassApplication.CurrentLoan;
         public static bool IsTest()
         {
             CommunitySettings cdo = CustomDataObject.Get<CommunitySettings>(CommunitySettings.Key);
@@ -40,6 +44,63 @@ namespace CommunityPlugin.Objects.Helpers
             {
                 return EncompassHelper.User.Personas?.Cast<Persona>().LastOrDefault().Name ?? string.Empty;
             }
+        }
+
+        public static object ParseExpression(string Expression, bool TrueFalseOnly = false)
+        {
+            object result = null;
+            string calc = string.Empty;
+            IMapping translation = CreateByTranslation(Expression);
+            try
+            {
+                DataCollection collect = new FakedDataCollection();
+                collect.Fill(Translator.GetNeededFieldsByTranslation(Expression));
+                calc = collect.GetResultByMapping(translation, true);
+
+            }
+            catch(Exception ex)
+            {
+                Logger.HandleError(ex, nameof(ParseExpression));
+            }
+            if (TrueFalseOnly)
+            {
+                if (calc.Contains("true") || calc.Contains("false"))
+                {
+                    result = calc.Contains("true") ? true : false;
+                }
+                else
+                {
+                    MessageBox.Show($"Calculation results must be true and false like so. {Environment.NewLine}\"true\" : If [2] > 0 {Environment.NewLine}ELSE {Environment.NewLine} \"false\"");
+                }
+            }
+            return result;
+        }
+
+        private static IMapping CreateByTranslation(string Translation)
+        {
+            BaseClasses.Mapping mapping = new BaseClasses.Mapping()
+            {
+                ColumnName = "Testing Column",
+                Description = "The mapping item only used for testing",
+                Translation = Translation
+            };
+            mapping.TranslationType = mapping.GetTranslationType(Translation);
+            return (IMapping)mapping;
+        }
+
+        public static string[] GetAllMilestones()
+        {
+            return EncompassApplication.Session.Loans.Milestones.Cast<EllieMae.Encompass.BusinessEnums.Milestone>().OrderBy(x=>x.Name).Select(x => x.Name).ToArray();
+        }
+
+        public static string[] GetFolders()
+        {
+            return EncompassApplication.Session.Loans.Folders.Cast<LoanFolder>().OrderBy(x => x.Name).Select(x => x.Name).ToArray();
+        }
+
+        public static bool CheckMSComplete(string MilestoneName)
+        {
+            return EncompassApplication.CurrentLoan?.Log.MilestoneEvents.Cast<MilestoneEvent>().Any(x => x.MilestoneName.Equals(MilestoneName) && x.Completed) ?? false;
         }
         public static string[] GetReportValues(string[] fields, string guid)
         {

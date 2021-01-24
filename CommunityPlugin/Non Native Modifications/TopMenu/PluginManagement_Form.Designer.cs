@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.flwPlugins = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.txtTest = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.chkAdmin = new System.Windows.Forms.CheckBox();
-            this.chkSide = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chkAdmin = new System.Windows.Forms.CheckBox();
+            this.txtTest = new System.Windows.Forms.TextBox();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.chkSide = new System.Windows.Forms.CheckBox();
             this.flwPlugins.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -51,52 +51,6 @@
             this.flwPlugins.TabIndex = 0;
             this.flwPlugins.WrapContents = false;
             // 
-            // btnSave
-            // 
-            this.btnSave.Location = new System.Drawing.Point(202, 62);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 0;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // txtTest
-            // 
-            this.txtTest.Location = new System.Drawing.Point(70, 19);
-            this.txtTest.Name = "txtTest";
-            this.txtTest.Size = new System.Drawing.Size(196, 20);
-            this.txtTest.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Test URL";
-            // 
-            // chkAdmin
-            // 
-            this.chkAdmin.AutoSize = true;
-            this.chkAdmin.Location = new System.Drawing.Point(13, 45);
-            this.chkAdmin.Name = "chkAdmin";
-            this.chkAdmin.Size = new System.Drawing.Size(124, 17);
-            this.chkAdmin.TabIndex = 3;
-            this.chkAdmin.Text = "Super Admin Access";
-            this.chkAdmin.UseVisualStyleBackColor = true;
-            // 
-            // chkSide
-            // 
-            this.chkSide.AutoSize = true;
-            this.chkSide.Location = new System.Drawing.Point(13, 68);
-            this.chkSide.Name = "chkSide";
-            this.chkSide.Size = new System.Drawing.Size(103, 17);
-            this.chkSide.TabIndex = 4;
-            this.chkSide.Text = "Open SideMenu";
-            this.chkSide.UseVisualStyleBackColor = true;
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.chkAdmin);
@@ -110,6 +64,52 @@
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Global Settings";
+            // 
+            // chkAdmin
+            // 
+            this.chkAdmin.AutoSize = true;
+            this.chkAdmin.Location = new System.Drawing.Point(13, 45);
+            this.chkAdmin.Name = "chkAdmin";
+            this.chkAdmin.Size = new System.Drawing.Size(124, 17);
+            this.chkAdmin.TabIndex = 3;
+            this.chkAdmin.Text = "Super Admin Access";
+            this.chkAdmin.UseVisualStyleBackColor = true;
+            // 
+            // txtTest
+            // 
+            this.txtTest.Location = new System.Drawing.Point(70, 19);
+            this.txtTest.Name = "txtTest";
+            this.txtTest.Size = new System.Drawing.Size(196, 20);
+            this.txtTest.TabIndex = 1;
+            // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(202, 62);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.TabIndex = 0;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(11, 22);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(53, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Test URL";
+            // 
+            // chkSide
+            // 
+            this.chkSide.AutoSize = true;
+            this.chkSide.Location = new System.Drawing.Point(13, 68);
+            this.chkSide.Name = "chkSide";
+            this.chkSide.Size = new System.Drawing.Size(103, 17);
+            this.chkSide.TabIndex = 4;
+            this.chkSide.Text = "Open SideMenu";
+            this.chkSide.UseVisualStyleBackColor = true;
             // 
             // PluginManagement_Form
             // 

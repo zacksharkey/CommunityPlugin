@@ -13,6 +13,10 @@ namespace CommunityPlugin.Objects
 {
     public abstract class Plugin : IPlugin
     {
+        public virtual void Configure()
+        {
+
+        }
         public virtual void Run()
         {
             if (!PluginAccess.CheckAccess(GetType().Name))
@@ -228,9 +232,9 @@ namespace CommunityPlugin.Objects
 
         public virtual void Committed(object sender, EventArgs e)
         {
-            throw new ImplementationException(GetType().Name, nameof(ICommitted), nameof(Committed));
+            //throw new ImplementationException(GetType().Name, nameof(ICommitted), nameof(Committed));
         }
-        private void Base_Committed(object sender, PersistentObjectEventArgs e)
+        private void Base_Committed(object sender, EventArgs e)
         {
             Committed(sender, e);
         }

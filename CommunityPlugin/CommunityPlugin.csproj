@@ -156,10 +156,12 @@
       <HintPath>..\..\..\..\..\..\SmartClientCache\Apps\UAC\Ellie Mae\xIHR5EqGa7zPnRG0YpD5z4TPAB0=\Encompass360\SetupUI.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Device" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -245,12 +247,25 @@
     <Compile Include="Non Native Modifications\TopMenu\AutoMailer_Form.Designer.cs">
       <DependentUpon>AutoMailer_Form.cs</DependentUpon>
     </Compile>
+    <Compile Include="Non Native Modifications\TopMenu\BatchTool.cs" />
+    <Compile Include="Non Native Modifications\TopMenu\BatchTool_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Non Native Modifications\TopMenu\BatchTool_Form.Designer.cs">
+      <DependentUpon>BatchTool_Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="Non Native Modifications\TopMenu\Impersonate.cs" />
     <Compile Include="Non Native Modifications\TopMenu\Impersonate_Form.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Non Native Modifications\TopMenu\Impersonate_Form.Designer.cs">
       <DependentUpon>Impersonate_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Non Native Modifications\TopMenu\LoanFolderMove_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Non Native Modifications\TopMenu\LoanFolderMove_Form.Designer.cs">
+      <DependentUpon>LoanFolderMove_Form.cs</DependentUpon>
     </Compile>
     <Compile Include="Non Native Modifications\TopMenu\MenuItemBase.cs" />
     <Compile Include="Non Native Modifications\TopMenu\PluginManagement.cs" />
@@ -270,38 +285,72 @@
     <Compile Include="Non Native Modifications\TopMenu\TopMenuBase.cs" />
     <Compile Include="Non Native Modifications\VIP.cs" />
     <Compile Include="Objects\Args\BorrowerPairChangedEventArgs.cs" />
+    <Compile Include="Objects\Args\CriterionException.cs" />
     <Compile Include="Objects\Args\FormOpenedArgs.cs" />
+    <Compile Include="Objects\Args\InvalidFunctionException.cs" />
+    <Compile Include="Objects\Args\ItemFilterEventArgs.cs" />
+    <Compile Include="Objects\Args\TranslationFilterEventArgs.cs" />
+    <Compile Include="Objects\Args\WeakedKeyException.cs" />
+    <Compile Include="Objects\BaseClasses\ConfigurationValidatorBase.cs" />
+    <Compile Include="Objects\BaseClasses\DataCollection.cs" />
+    <Compile Include="Objects\BaseClasses\FakedDataCollection.cs" />
+    <Compile Include="Objects\BaseClasses\FunctionParser.cs" />
+    <Compile Include="Objects\BaseClasses\GlobalTracer.cs" />
+    <Compile Include="Objects\BaseClasses\Mapping.cs" />
+    <Compile Include="Objects\BaseClasses\Tracer.cs" />
+    <Compile Include="Objects\BaseClasses\Translator.cs" />
+    <Compile Include="Objects\BaseClasses\XConfiguration.cs" />
+    <Compile Include="Objects\CustomDataObjects\LoanFolderRules.cs" />
     <Compile Include="Objects\Enums\CDOType.cs" />
     <Compile Include="Objects\Enums\CloneBizRuleType.cs" />
     <Compile Include="Objects\Enums\CloneCondition.cs" />
+    <Compile Include="Objects\Enums\DataProvider.cs" />
     <Compile Include="Objects\Enums\EncompassLogType.cs" />
     <Compile Include="Objects\Enums\FrequencyType.cs" />
     <Compile Include="Objects\Enums\IFBAction.cs" />
     <Compile Include="Objects\Enums\LinkType.cs" />
+    <Compile Include="Objects\Enums\RunMode.cs" />
+    <Compile Include="Objects\Enums\SignalType.cs" />
+    <Compile Include="Objects\Enums\SymmetricAlgorithmType.cs" />
+    <Compile Include="Objects\Enums\TranslationType.cs" />
+    <Compile Include="Objects\Enums\ValueType.cs" />
     <Compile Include="Objects\Extension\StringExtensions.cs" />
     <Compile Include="Objects\Extension\WindowsFormsExtensions.cs" />
     <Compile Include="Objects\Factories\EmailFactory.cs" />
     <Compile Include="Objects\CustomDataObjects\AutoMailerCDO.cs" />
     <Compile Include="Objects\CustomDataObjects\CommunitySettings.cs" />
+    <Compile Include="Objects\Handlers\ItemFilterHandler.cs" />
+    <Compile Include="Objects\Handlers\TranslationFilterHandler.cs" />
     <Compile Include="Objects\Helpers\CustomDataObject.cs" />
+    <Compile Include="Objects\Helpers\DbClient.cs" />
+    <Compile Include="Objects\Helpers\DbFactory.cs" />
     <Compile Include="Objects\Helpers\EncompassHelper.cs" />
     <Compile Include="Objects\CustomDataObjects\PipelineFilterCDO.cs" />
+    <Compile Include="Objects\Helpers\FileParser.cs" />
+    <Compile Include="Objects\Helpers\Global.cs" />
+    <Compile Include="Objects\Helpers\GlobalConfiguration.cs" />
     <Compile Include="Objects\Helpers\Reflect.cs" />
     <Compile Include="Objects\CustomDataObjects\VIPCDO.cs" />
+    <Compile Include="Objects\Helpers\RNDGenerator.cs" />
+    <Compile Include="Objects\Helpers\ValueFormatter.cs" />
     <Compile Include="Objects\Interface\AbstractControlDescriptionProvider.cs" />
     <Compile Include="Objects\Interface\IAnalysisBase.cs" />
     <Compile Include="Objects\Interface\IBeforeCommit.cs" />
     <Compile Include="Objects\Interface\IBeforeMilestoneCompleted.cs" />
     <Compile Include="Objects\Interface\IBorrowerPairChanged.cs" />
     <Compile Include="Objects\Interface\ICommitted.cs" />
+    <Compile Include="Objects\Interface\ICriterionParser.cs" />
     <Compile Include="Objects\Interface\IDataExchangeReceived.cs" />
+    <Compile Include="Objects\Interface\IDbClient.cs" />
     <Compile Include="Objects\Interface\IFactory.cs" />
     <Compile Include="Objects\Interface\IFieldChange.cs" />
+    <Compile Include="Objects\Interface\IFunctionParser.cs" />
     <Compile Include="Objects\Interface\ILoanMenuControl.cs" />
     <Compile Include="Objects\Interface\ILoanTabChanged.cs" />
     <Compile Include="Objects\Interface\ILogEntryAdded.cs" />
     <Compile Include="Objects\Interface\ILogEntryChanged.cs" />
     <Compile Include="Objects\Interface\ILogEntryRemoved.cs" />
+    <Compile Include="Objects\Interface\IMapping.cs" />
     <Compile Include="Objects\Interface\IMenuItemBase.cs" />
     <Compile Include="Objects\Interface\IMilestoneCompleted.cs" />
     <Compile Include="Objects\Interface\INativeFormLoaded.cs" />
@@ -312,11 +361,19 @@
     <Compile Include="Objects\Interface\InterfaceHelper.cs" />
     <Compile Include="Objects\Interface\IPipelineTabChanged.cs" />
     <Compile Include="Objects\Interface\IPlugin.cs" />
+    <Compile Include="Objects\Interface\ISettings.cs" />
+    <Compile Include="Objects\Interface\ISupportFormat.cs" />
     <Compile Include="Objects\Interface\ITabChanged.cs" />
     <Compile Include="Objects\Interface\ITask.cs" />
+    <Compile Include="Objects\Interface\ITracer.cs" />
+    <Compile Include="Objects\Interface\ITranslator.cs" />
+    <Compile Include="Objects\Interface\IValueFormatter.cs" />
+    <Compile Include="Objects\Interface\IXmlMapping.cs" />
     <Compile Include="Objects\Interface\LoanMenuControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Objects\Models\Algorythm\BlowFish.cs" />
+    <Compile Include="Objects\Models\Algorythm\XTea.cs" />
     <Compile Include="Objects\Models\AnalysisBase.cs" />
     <Compile Include="Objects\Models\AnalysisResult.cs" />
     <Compile Include="Objects\Models\BlockingCollectionQueue.cs" />
@@ -325,11 +382,13 @@
     <Compile Include="Objects\Models\EncompassFieldInfo.cs" />
     <Compile Include="Objects\Models\EncompassLog.cs" />
     <Compile Include="Objects\CustomDataObjects\FilterCDO.cs" />
+    <Compile Include="Objects\Models\FolderMoveRequest.cs" />
     <Compile Include="Objects\Models\IFBLog.cs" />
     <Compile Include="Objects\Models\InputForm.cs" />
     <Compile Include="Objects\Models\InputFormControl.cs" />
     <Compile Include="Objects\Models\InputFormEvent.cs" />
     <Compile Include="Objects\Models\InputFormResult.cs" />
+    <Compile Include="Objects\Models\LoanFolderRule.cs" />
     <Compile Include="Objects\Models\MailTrigger.cs" />
     <Compile Include="Objects\Models\PersonaResult.cs" />
     <Compile Include="Objects\Models\PipelineFilter.cs" />
@@ -340,6 +399,28 @@
     <Compile Include="Objects\Models\PluginAccessRight.cs" />
     <Compile Include="Objects\Models\SearchResult.cs" />
     <Compile Include="Objects\Models\SearchResultField.cs" />
+    <Compile Include="Objects\Models\Translation\BlockCipher.cs" />
+    <Compile Include="Objects\Models\Translation\ConfigurationElementProperty.cs" />
+    <Compile Include="Objects\Models\Translation\CriterionParser.cs" />
+    <Compile Include="Objects\Models\Translation\CsvLine.cs" />
+    <Compile Include="Objects\Models\Translation\CSymmetricAlgorithm.cs" />
+    <Compile Include="Objects\Models\Translation\DataCriterionParser.cs" />
+    <Compile Include="Objects\Models\Translation\DataFunctionParser.cs" />
+    <Compile Include="Objects\Models\Translation\DefaultValidator.cs" />
+    <Compile Include="Objects\Models\Translation\DWord.cs" />
+    <Compile Include="Objects\Models\Translation\ExportMapping.cs" />
+    <Compile Include="Objects\Models\Translation\FakedTracer.cs" />
+    <Compile Include="Objects\Models\Translation\FileTracer.cs" />
+    <Compile Include="Objects\Models\Translation\ImportMapping.cs" />
+    <Compile Include="Objects\Models\Translation\MappingDictionary.cs" />
+    <Compile Include="Objects\Models\Translation\MappingVersion.cs" />
+    <Compile Include="Objects\Models\Translation\ServerTracer.cs" />
+    <Compile Include="Objects\Models\Translation\SymmetricCrypto.cs" />
+    <Compile Include="Objects\Models\Translation\TextMappingParser.cs" />
+    <Compile Include="Objects\Models\Translation\Translator.cs" />
+    <Compile Include="Objects\Models\Translation\XmlMapping.cs" />
+    <Compile Include="Objects\Models\Translation\XmlSettings.cs" />
+    <Compile Include="Objects\Models\Translation\XmlSettingSection.cs" />
     <Compile Include="Objects\Plugin.cs" />
     <Compile Include="Objects\ImplementationException.cs" />
     <Compile Include="Objects\Logger.cs" />
@@ -368,13 +449,18 @@
     <Compile Include="Standard Plugins\HCAutomate.cs" />
     <Compile Include="Standard Plugins\KickEveryoneOut.cs" />
     <Compile Include="Standard Plugins\LiveTestUser.cs" />
+    <Compile Include="Standard Plugins\LoanFolderMoveTool.cs" />
+    <Compile Include="Standard Plugins\LoanFolderMove_Simulate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Standard Plugins\LoanFolderMove_Simulate.Designer.cs">
+      <DependentUpon>LoanFolderMove_Simulate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Standard Plugins\OpeneFolderDocument.cs" />
     <Compile Include="Standard Plugins\OpenInputForm.cs" />
     <Compile Include="Standard Plugins\VirtualFields.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Objects\BaseClasses\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Non Native Modifications\Pipeline\ReassignmentDialog.resx">
       <DependentUpon>ReassignmentDialog.cs</DependentUpon>
@@ -394,8 +480,14 @@
     <EmbeddedResource Include="Non Native Modifications\TopMenu\AutoMailer_Form.resx">
       <DependentUpon>AutoMailer_Form.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Non Native Modifications\TopMenu\BatchTool_Form.resx">
+      <DependentUpon>BatchTool_Form.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Non Native Modifications\TopMenu\Impersonate_Form.resx">
       <DependentUpon>Impersonate_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Non Native Modifications\TopMenu\LoanFolderMove_Form.resx">
+      <DependentUpon>LoanFolderMove_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Non Native Modifications\TopMenu\PluginManagement_Form.resx">
       <DependentUpon>PluginManagement_Form.cs</DependentUpon>
@@ -406,6 +498,9 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Standard Plugins\LoanFolderMove_Simulate.resx">
+      <DependentUpon>LoanFolderMove_Simulate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
