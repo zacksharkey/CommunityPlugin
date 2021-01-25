@@ -16,6 +16,11 @@
 **Settings:** The new Plugin Management Screen is where you will setup all of your plugin access rights
 <img src="https://media-exp1.licdn.com/dms/image/C4E22AQHUm8v-2GTklQ/feedshare-shrink_2048_1536-alternative/0?e=1602115200&v=beta&t=d5buVutAPDerz2xOmSyBuL4okXsLMjLJxDPw00_jIUU"> <br>
 
+**Updates:**
+1.24.2021 - New Loan Folder Move Tool
+1.24.2021 - Added ability to Parse Expressions
+1.25.2021 - Added Batch Update Tool
+
 **SOME OF THE SOLUTIONS INCLUDE:**<br>
 **Input Form Automator :** Automate Applying Input Form sets based on persona, milestone, loan type, user, etc<br>
 **Email Trigger Automator :** Use a client to run automated emails.<br>
