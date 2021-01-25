@@ -18,8 +18,10 @@
 
 **Updates:**
 1.24.2021 - New Loan Folder Move Tool </br>
-1.24.2021 - Added ability to Parse Expressions
-1.25.2021 - Added Batch Update Tool
+1.24.2021 - Added ability to Parse Expressions</br>
+1.25.2021 - Added Batch Update Tool</br>
+
+</br></br>
 
 **SOME OF THE SOLUTIONS INCLUDE:**<br>
 **Input Form Automator :** Automate Applying Input Form sets based on persona, milestone, loan type, user, etc<br>
