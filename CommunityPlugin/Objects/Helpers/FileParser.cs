@@ -3,8 +3,10 @@ using CommunityPlugin.Objects.Models.Translation;
 using EllieMae.Encompass.Client;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 
 namespace CommunityPlugin.Objects.Helpers
 {
@@ -98,5 +100,67 @@ namespace CommunityPlugin.Objects.Helpers
                     throw new NotSupportedException(string.Format("Invalid support mode:{0}", (object)GlobalConfiguration.Mode));
             }
         }
+
+        public static DataTable DataTableFromXlsx(string Path, string password = "")
+        {
+
+            Excel.Application objXL = null;
+            Excel.Workbook objWB = null;
+            objXL = new Excel.Application();
+            objWB = objXL.Workbooks.Open(Path);
+            Excel.Worksheet objSHT = objWB.Worksheets[1];
+
+            int rows = objSHT.UsedRange.Rows.Count;
+            int cols = objSHT.UsedRange.Columns.Count;
+            DataTable dt = new DataTable();
+            int noofrow = 1;
+
+            for (int c = 1; c <= cols; c++)
+            {
+                string colname = objSHT.Cells[1, c].Text;
+                dt.Columns.Add(colname);
+                noofrow = 2;
+            }
+
+            for (int r = noofrow; r <= rows; r++)
+            {
+                DataRow dr = dt.NewRow();
+                for (int c = 1; c <= cols; c++)
+                {
+                    dr[c - 1] = objSHT.Cells[r, c].Text;
+                }
+
+                dt.Rows.Add(dr);
+            }
+
+            objWB.Close();
+            objXL.Quit();
+            return dt;
+
+        }
+
+        public static DataTable DataTableFromCSV(string Path)
+        {
+            DataTable dt = new DataTable();
+            string[] Lines = File.ReadAllLines(Path);
+            string[] Fields;
+            Fields = Lines[0].Split(new char[] { ',' });
+            int Cols = Fields.GetLength(0);
+            for (int i = 0; i < Cols; i++)
+                dt.Columns.Add(Fields[i].ToLower(), typeof(string));
+            DataRow Row;
+            for (int i = 1; i < Lines.GetLength(0); i++)
+            {
+                Fields = Lines[i].Split(new char[] { ',' });
+                Row = dt.NewRow();
+                for (int f = 0; f < Cols; f++)
+                    Row[f] = Fields[f];
+                dt.Rows.Add(Row);
+            }
+
+            return dt;
+        }
     }
+
+
 }
