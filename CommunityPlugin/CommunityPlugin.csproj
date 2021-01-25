@@ -139,6 +139,11 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\SmartClientCache\Apps\UAC\Ellie Mae\xIHR5EqGa7zPnRG0YpD5z4TPAB0=\Encompass360\FormEditorUI.dll</HintPath>
     </Reference>
+    <Reference Include="Interop.Excel, Version=1.3.0.0, Culture=neutral, PublicKeyToken=d11ef57bba4acf91">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\..\..\..\..\SmartClientCache\Apps\UAC\Ellie Mae\xIHR5EqGa7zPnRG0YpD5z4TPAB0=\Encompass360\Interop.Excel.dll</HintPath>
+    </Reference>
     <Reference Include="MainUI">
       <HintPath>..\..\..\..\..\..\SmartClientCache\Apps\UAC\Ellie Mae\xIHR5EqGa7zPnRG0YpD5z4TPAB0=\Encompass360\MainUI.dll</HintPath>
     </Reference>

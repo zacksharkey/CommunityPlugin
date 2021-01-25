@@ -21,6 +21,7 @@ using CommunityPlugin.Objects.CustomDataObjects;
 using EllieMae.Encompass.BusinessObjects.Loans.Logging;
 using CommunityPlugin.Objects.Interface;
 using CommunityPlugin.Objects.BaseClasses;
+using EllieMae.Encompass.Query;
 
 namespace CommunityPlugin.Objects.Helpers  
 { 
@@ -46,6 +47,22 @@ namespace CommunityPlugin.Objects.Helpers
             }
         }
 
+        public static string LoanNumberToGuid(string LoanNumber)
+        {
+            try
+            {
+                return EncompassApplication.Session.Loans.Query(new StringFieldCriterion("Fields.364", LoanNumber, StringFieldMatchType.Exact, true))[0].Guid;
+            }
+            catch(Exception ex)
+            {
+                return string.Empty;
+            }
+        }
+
+        public static void SubmitBatch(BatchUpdate Batch)
+        {
+            EncompassApplication.Session.Loans.SubmitBatchUpdate(Batch);
+        }
         public static object ParseExpression(string Expression, bool TrueFalseOnly = false)
         {
             object result = null;
