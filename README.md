@@ -5,16 +5,23 @@
 
 **Tutorials:**
 
-**The Framework Part 1** - https://www.youtube.com/watch?v=XW0OSDUA-AU <br>
-**Installing the Plugin** - https://www.youtube.com/watch?v=ZyoEFFkt2Bo <br>
-**Solutionizing Encompass** - https://www.youtube.com/watch?v=vZD6_ufyQ1Y <br>
-**Finding Field Calculations** - https://www.youtube.com/watch?v=POAtMQUYZ2E <br>
-**Debugging your plugin** - https://www.youtube.com/watch?v=HKTaqdWnz8w <br>
+**The Framework Part 1** - https://youtu.be/9juibPIQZUg <br>
+**Installing the Plugin** - https://youtu.be/sA2pMGhBxeM <br>
+**Solutionizing Encompass** - https://youtu.be/gP2heVPHb08 <br>
+**Finding Field Calculations** - https://youtu.be/8T9deHoDOjw <br>
+**Debugging your plugin** - https://youtu.be/4k5jkDpJVz0 <br>
 
 **Introduction:** This Plugin was built in an effort to help the community rapidly create ideas in Encompass. 
 
 **Settings:** The new Plugin Management Screen is where you will setup all of your plugin access rights
 <img src="https://media-exp1.licdn.com/dms/image/C4E22AQHUm8v-2GTklQ/feedshare-shrink_2048_1536-alternative/0?e=1602115200&v=beta&t=d5buVutAPDerz2xOmSyBuL4okXsLMjLJxDPw00_jIUU"> <br>
+
+**Updates:**</br>
+1.24.2021 - New **Loan Folder Move Tool** </br>
+1.24.2021 - Added ability to Parse Expressions</br>
+1.25.2021 - Added **Batch Update Tool**</br>
+
+</br></br>
 
 **SOME OF THE SOLUTIONS INCLUDE:**<br>
 **Input Form Automator :** Automate Applying Input Form sets based on persona, milestone, loan type, user, etc<br>
