@@ -28,11 +28,11 @@ namespace CommunityPlugin.Objects.Helpers
     public static class EncompassHelper
     {
         public static Loan CurrentLoan => EncompassApplication.CurrentLoan;
-        public static bool IsTest()
-        {
-            CommunitySettings cdo = CustomDataObject.Get<CommunitySettings>(CommunitySettings.Key);
-            return EncompassApplication.Session.ServerURI.Contains(cdo.TestServer);
-        }
+        //public static bool IsTest()
+        //{
+        //    CommunitySettings cdo = CustomDataObject.Get<CommunitySettings>(CommunitySettings.Key);
+        //    return EncompassApplication.Session.ServerURI.Contains(cdo.TestServer);
+        //}
 
         public static string FieldDescription(string FieldID)
         {

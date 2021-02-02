@@ -32,7 +32,7 @@ namespace CommunityPlugin.Non_Native_Modifications.SideMenu.UserControls
         {
             InitializeComponent();
             CommunitySettings cdo = CustomDataObject.Get<CommunitySettings>(CommunitySettings.Key);
-            Fields = cdo.LoanInformation == null  || cdo.LoanInformation.Count.Equals(0) ? new Dictionary<string, string>() : cdo.LoanInformation.ContainsKey(EncompassHelper.LastPersona) ? cdo.LoanInformation[EncompassHelper.LastPersona] : cdo.LoanInformation["Default"];
+            //Fields = cdo.LoanInformation == null  || cdo.LoanInformation.Count.Equals(0) ? new Dictionary<string, string>() : cdo.LoanInformation.ContainsKey(EncompassHelper.LastPersona) ? cdo.LoanInformation[EncompassHelper.LastPersona] : cdo.LoanInformation["Default"];
             RefreshInfo();
         }
 

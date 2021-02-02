@@ -89,7 +89,7 @@ namespace CommunityPlugin.Non_Native_Modifications.SideMenu
             foreach (System.Type type in ((IEnumerable<System.Type>)typeof(SideMenuUI).Assembly.GetTypes()).Where<System.Type>((Func<System.Type, bool>)(type => type.IsSubclassOf(typeof(LoanMenuControl)))).ToList<System.Type>())
             {
                 LoanMenuControl loanMenuControl = Activator.CreateInstance(type) as LoanMenuControl;
-                if (loanMenuControl != null && (loanMenuControl.CanRun() || EncompassHelper.IsSuper && EncompassHelper.IsTest()) && source.FirstOrDefault<MenuPanelSection>((Func<MenuPanelSection, bool>)(x => x.GetType() == loanMenuControl.GetType())) == null)
+                if (loanMenuControl != null && (loanMenuControl.CanRun()) && source.FirstOrDefault<MenuPanelSection>((Func<MenuPanelSection, bool>)(x => x.GetType() == loanMenuControl.GetType())) == null)
                 {
                     source.Add(new MenuPanelSection(SideMenuUI.GetHeading(loanMenuControl.Name), true, (loanMenuControl.CanShow() ? 1 : 0) != 0, new Control[1]
                     {
