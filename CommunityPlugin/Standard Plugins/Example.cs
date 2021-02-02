@@ -6,7 +6,7 @@ using System;
 
 namespace CommunityPlugin.Standard_Plugins
 {
-    public class Example: Plugin, ILoanOpened, IFieldChange, ILogEntryChanged
+    public class Example: Plugin, ILoanOpened, ILogEntryChanged
     {
         public override void LoanOpened(object sender, EventArgs e) { }
 
