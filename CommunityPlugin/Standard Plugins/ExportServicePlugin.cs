@@ -45,9 +45,11 @@ namespace CommunityPlugin.Standard_Plugins
 
         public override void FieldChanged(object sender, FieldChangeEventArgs e)
         {
-            if(e.FieldID.Equals(Config.ExportFieldID) && e.NewValue.Equals("X"))
+            if(e.FieldID.Equals(Config.ExportFieldID) && !string.IsNullOrEmpty(e.NewValue))
             {
-                ServiceSetting setting = ServicesMapping.GetServiceSettingFromID("Ilad");
+                //"Ilad"
+                string service = e.NewValue;
+                ServiceSetting setting = ServicesMapping.GetServiceSettingFromID(service);
                 new ExportService(Session.LoanDataMgr, setting).ProcessLoans(new string[] { EncompassApplication.CurrentLoan.Guid });
             }
         }
