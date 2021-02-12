@@ -490,6 +490,9 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <EmbeddedResource Include="Config\ExportServicePlugin_Config.resx">
+      <DependentUpon>ExportServicePlugin_Config.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Non Native Modifications\Pipeline\ReassignmentDialog.resx">
       <DependentUpon>ReassignmentDialog.cs</DependentUpon>
     </EmbeddedResource>
