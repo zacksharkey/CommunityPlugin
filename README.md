@@ -20,6 +20,7 @@
 1.24.2021 - New **Loan Folder Move Tool** </br>
 1.24.2021 - Added ability to Parse Expressions</br>
 1.25.2021 - Added **Batch Update Tool**</br>
+2.11.2021 - Added ability to Export GSE services including 3.4 
 
 </br></br>
 
