@@ -1,9 +1,10 @@
-﻿using System;
+﻿using EllieMae.Encompass.Automation;
+using System;
 
 namespace CommunityPlugin.Objects.Interface
 {
     public interface IFormLoaded
     {
-        void FormLoaded(object sender, EventArgs e);
+        void FormLoaded(object sender, FormChangeEventArgs e);
     }
 }

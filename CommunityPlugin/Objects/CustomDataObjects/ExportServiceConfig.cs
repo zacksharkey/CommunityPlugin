@@ -1,13 +1,31 @@
-﻿namespace CommunityPlugin.Objects.CustomDataObjects
+﻿using System.Collections.Generic;
+
+namespace CommunityPlugin.Objects.CustomDataObjects
 {
+    public class ExportServiceConfigs
+    {
+        public static string Key = $"{nameof(ExportServiceConfigs)}.json";
+
+        public List<ExportServiceConfig> Configs { get; set; }
+        public ExportServiceConfigs()
+        {
+            Configs = new List<ExportServiceConfig>();
+        }
+    }
+
     public class ExportServiceConfig
     {
-        public static string Key = $"{nameof(ExportServiceConfig)}.json";
+        public string Service { get; set; }
 
         public string ExportFieldID { get; set; }
+
+        public List<string> Forms { get; set; }
+
         public ExportServiceConfig()
         {
             ExportFieldID = string.Empty;
+            Service = string.Empty;
+            Forms = new List<string>();
         }
     }
 }

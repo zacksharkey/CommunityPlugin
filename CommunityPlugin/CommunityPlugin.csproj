@@ -327,6 +327,7 @@
     <Compile Include="Objects\Enums\DataProvider.cs" />
     <Compile Include="Objects\Enums\EncompassLogType.cs" />
     <Compile Include="Objects\Enums\FrequencyType.cs" />
+    <Compile Include="Objects\Enums\GSEServiceType.cs" />
     <Compile Include="Objects\Enums\IFBAction.cs" />
     <Compile Include="Objects\Enums\LinkType.cs" />
     <Compile Include="Objects\Enums\RunMode.cs" />
