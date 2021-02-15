@@ -302,11 +302,11 @@ namespace CommunityPlugin.Objects
             }
         }
 
-        public virtual void FormLoaded(object sender, EventArgs e)
+        public virtual void FormLoaded(object sender, FormChangeEventArgs e)
         {
-            throw new ImplementationException(GetType().Name, nameof(IFormLoaded), nameof(FormLoaded));
+            //throw new ImplementationException(GetType().Name, nameof(IFormLoaded), nameof(FormLoaded));
         }
-        private void Base_FormLoaded(object sender, EventArgs e)
+        private void Base_FormLoaded(object sender, FormChangeEventArgs e)
         {
             FormLoaded(sender, e);
         }

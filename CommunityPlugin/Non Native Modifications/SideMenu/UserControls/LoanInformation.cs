@@ -18,7 +18,7 @@ namespace CommunityPlugin.Non_Native_Modifications.SideMenu.UserControls
         private System.Windows.Forms.DataGridView dataGridView1;
 
         private Dictionary<string, string> Fields { get; set; }
-        private Dictionary<string, EncompassFieldInfo> InfoLines => Fields.ToDictionary(x => x.Key.ToString(), x => new EncompassFieldInfo(x.Key, x.Value), StringComparer.OrdinalIgnoreCase);
+        private Dictionary<string, EncompassFieldInfo> InfoLines => Fields?.ToDictionary(x => x.Key.ToString(), x => new EncompassFieldInfo(x.Key, x.Value), StringComparer.OrdinalIgnoreCase);
         public override bool CanRun()
         {
             return PluginAccess.CheckAccess(nameof(LoanInformation));
@@ -38,6 +38,9 @@ namespace CommunityPlugin.Non_Native_Modifications.SideMenu.UserControls
 
         private void RefreshInfo()
         {
+            if (InfoLines == null)
+                return;
+
             this.Name = nameof(LoanInformation);
             this.Size = new System.Drawing.Size(320, (InfoLines.Count + 1) * 21);
             this.dataGridView1.DataSource = (object)this.InfoLines.Values.ToList<EncompassFieldInfo>();

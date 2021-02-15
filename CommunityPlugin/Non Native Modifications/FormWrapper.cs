@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using CommunityPlugin.Objects.Extension;
 
 namespace CommunityPlugin.Non_Native_Modifications
 {
@@ -54,11 +55,7 @@ namespace CommunityPlugin.Non_Native_Modifications
 
         public static GridView GetPipeline()
         {
-            Control[] controlArray = EncompassForm?.Controls.Find("gvLoans", true);
-            if (controlArray == null || ((IEnumerable<Control>)controlArray).Count<Control>().Equals(0))
-                return null;
-
-            return controlArray[0] as GridView;
+            return EncompassForm.AllControls<GridView>().FirstOrDefault<GridView>(x=>x.Name.Equals("gvLoans"));
         }
 
         private static void RefreshFormList()
