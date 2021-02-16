@@ -17,13 +17,13 @@ namespace CommunityPlugin.Objects.CustomDataObjects
     {
         public string Service { get; set; }
 
-        public string ExportFieldID { get; set; }
+        public string ExportControlID { get; set; }
 
         public List<string> Forms { get; set; }
 
         public ExportServiceConfig()
         {
-            ExportFieldID = string.Empty;
+            ExportControlID = string.Empty;
             Service = string.Empty;
             Forms = new List<string>();
         }

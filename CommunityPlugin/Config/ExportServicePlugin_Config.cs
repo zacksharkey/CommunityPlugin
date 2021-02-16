@@ -33,9 +33,11 @@ namespace CommunityPlugin.Config
             }
 
             config.Forms = chkForms.CheckedItems.Cast<string>().ToList();
-            config.ExportFieldID = txtFieldID.Text;
+            config.ExportControlID = txtFieldID.Text;
             config.Service = cmbService.Text;
             CustomDataObject.Save<ExportServiceConfigs>(ExportServiceConfigs.Key, Config);
+            MessageBox.Show("Changes Saved.");
+            this.Close();
         }
 
         private void cmbService_SelectedIndexChanged(object sender, EventArgs e)
@@ -50,8 +52,13 @@ namespace CommunityPlugin.Config
                 foreach (var item in config.Forms)
                     chkForms.SetItemChecked(chkForms.Items.IndexOf(item), true);
 
-                txtFieldID.Text = config.ExportFieldID;
+                txtFieldID.Text = config.ExportControlID;
             }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
