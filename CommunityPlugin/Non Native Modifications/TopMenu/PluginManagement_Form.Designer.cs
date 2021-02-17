@@ -38,7 +38,7 @@
             this.flwPlugins.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flwPlugins.Location = new System.Drawing.Point(0, 0);
             this.flwPlugins.Name = "flwPlugins";
-            this.flwPlugins.Size = new System.Drawing.Size(296, 393);
+            this.flwPlugins.Size = new System.Drawing.Size(296, 281);
             this.flwPlugins.TabIndex = 0;
             this.flwPlugins.WrapContents = false;
             // 
@@ -46,7 +46,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(296, 393);
+            this.ClientSize = new System.Drawing.Size(296, 281);
             this.Controls.Add(this.flwPlugins);
             this.Name = "PluginManagement_Form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
