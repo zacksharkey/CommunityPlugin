@@ -16,17 +16,17 @@ using System.Windows.Forms;
 
 namespace CommunityPlugin.Standard_Plugins
 {
-    public class OpenInputForm : Plugin, ILoanOpened, IFieldChange
+    public class OpenInputForm : Plugin, ILoanOpened, ILoanClosing, IFieldChange
     {
         private bool Open = false;
         private bool HasFields = false;
+        private QuickEntryPopupDialog2 q;
 
         public override void LoanOpened(object sender, EventArgs e)
         {
             HasFields = EncompassApplication.Session.Loans.FieldDescriptors.CustomFields.Cast<FieldDescriptor>().Any(x => x.FieldID.Equals("CX.OPENFORM"))
                      && EncompassApplication.Session.Loans.FieldDescriptors.CustomFields.Cast<FieldDescriptor>().Any(x => x.FieldID.Equals("CX.OPENFORM.SIZE"));
         }
-
         public override void FieldChanged(object sender, FieldChangeEventArgs e)
         {
             if (!HasFields)
@@ -41,8 +41,9 @@ namespace CommunityPlugin.Standard_Plugins
                 string size = EncompassHelper.Val("CX.OPENFORM.SIZE").ToString();
                 string[] setSize = size.Contains(',') ? size.Split(',') : new string[0];
                 Size controlSize = setSize.Count() > 0 ? new System.Drawing.Size(Convert.ToInt32(setSize[0]), Convert.ToInt32(setSize[1])) : new System.Drawing.Size(600, 600);
-                QuickEntryPopupDialog2 q = new QuickEntryPopupDialog2(Session.LoanData, $"pop{form.Name}", form, controlSize.Width, controlSize.Height, EllieMae.Encompass.Forms.FieldSource.CurrentLoan, "", Session.DefaultInstance);
+                q = new QuickEntryPopupDialog2(Session.LoanData, $"pop{form.Name}", form, controlSize.Width, controlSize.Height, EllieMae.Encompass.Forms.FieldSource.CurrentLoan, "", Session.DefaultInstance);
                 q.Show();
+                q.TopMost = true;
                 Open = true;
 
                 EncompassHelper.SetBlank("CX.OPENFORM");
@@ -65,9 +66,8 @@ namespace CommunityPlugin.Standard_Plugins
 
         public override void LoanClosing(object sender, EventArgs e)
         {
-            List<Form> close = FormWrapper.OpenForms.Where(x => x.Name.StartsWith("pop")).ToList();
-            foreach (Form f in close)
-                f.Close();
+            if(Open && q != null)
+                q.Close();
         }
     }
 }

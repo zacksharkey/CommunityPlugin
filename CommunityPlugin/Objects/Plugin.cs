@@ -242,7 +242,7 @@ namespace CommunityPlugin.Objects
 
         public virtual void LoanClosing(object sender, EventArgs e)
         {
-            throw new ImplementationException(GetType().Name, nameof(ILoanClosing), nameof(LoanClosing));
+            //throw new ImplementationException(GetType().Name, nameof(ILoanClosing), nameof(LoanClosing));
         }
         private void Base_LoanClosing(object sender, EventArgs e)
         {
