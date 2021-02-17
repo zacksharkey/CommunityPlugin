@@ -58,7 +58,7 @@ namespace CommunityPlugin.Objects
                     FileVersionInfo newPluginInfo = FileVersionInfo.GetVersionInfo(Path);
                     Assembly assembly = Assembly.GetExecutingAssembly();
                     Version version = Assembly.GetExecutingAssembly().GetName().Version;
-                    btnUpdate.Enabled = newPluginInfo.FileBuildPart > version.Build;
+                    btnUpdate.Enabled = newPluginInfo.ProductPrivatePart > version.Revision;
                 }
             }
             catch (Exception ex)
