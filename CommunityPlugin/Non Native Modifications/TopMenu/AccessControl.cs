@@ -131,6 +131,8 @@ namespace CommunityPlugin.Objects
             }
 
             btnUpdate.Enabled = false;
+
+            MessageBox.Show("Plugin Updated.");
         }
     }
 }
