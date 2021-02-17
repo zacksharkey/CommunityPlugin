@@ -10,8 +10,8 @@ namespace CommunityPlugin.Non_Native_Modifications.TopMenu
         public PluginManagement_Form()
         {
             InitializeComponent();
-
-            flwPlugins.Controls.Add(new AccessControl());
+            AccessControl control = new AccessControl();
+            flwPlugins.Controls.Add(control);
         }
 
         private void btnSave_Click(object sender, System.EventArgs e)
