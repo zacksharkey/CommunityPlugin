@@ -66,7 +66,6 @@ namespace CommunityPlugin.Objects
                 Logger.HandleError(ex, nameof(AccessControl));
                 MessageBox.Show("Error downloading Community Plugin");
             }
-
         }
 
         private void ComboBox1_TextChanged(object sender, EventArgs e)
