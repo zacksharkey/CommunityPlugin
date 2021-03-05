@@ -4,15 +4,18 @@ using CommunityPlugin.Objects.Helpers;
 using CommunityPlugin.Objects.Interface;
 using EllieMae.EMLite.ClientServer;
 using EllieMae.EMLite.Common.UI;
+using EllieMae.EMLite.DataEngine;
 using EllieMae.EMLite.InputEngine;
 using EllieMae.EMLite.RemotingServices;
 using EllieMae.Encompass.Automation;
 using EllieMae.Encompass.BusinessObjects.Loans;
+using EllieMae.Encompass.Forms;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using Form = System.Windows.Forms.Form;
 
 namespace CommunityPlugin.Standard_Plugins
 {
@@ -29,6 +32,7 @@ namespace CommunityPlugin.Standard_Plugins
         }
         public override void FieldChanged(object sender, FieldChangeEventArgs e)
         {
+            
             if (!HasFields)
                 return;
 
