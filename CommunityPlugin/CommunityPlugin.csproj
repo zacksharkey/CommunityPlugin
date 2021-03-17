@@ -343,6 +343,7 @@
     <Compile Include="Objects\Enums\SymmetricAlgorithmType.cs" />
     <Compile Include="Objects\Enums\TranslationType.cs" />
     <Compile Include="Objects\Enums\ValueType.cs" />
+    <Compile Include="Objects\Extension\EMExtension.cs" />
     <Compile Include="Objects\Extension\StringExtensions.cs" />
     <Compile Include="Objects\Extension\WindowsFormsExtensions.cs" />
     <Compile Include="Objects\Factories\EmailFactory.cs" />

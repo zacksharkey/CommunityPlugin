@@ -23,5 +23,10 @@ namespace CommunityPlugin.Objects.Extension
                 child = (Control)null;
             }
         }
+        public static void CheckAll(this CheckedListBox checkedListBox, bool check)
+        {
+            for (int i = 0; i < checkedListBox.Items.Count; i++)
+                checkedListBox.SetItemChecked(i, check);
+        }
     }
 }

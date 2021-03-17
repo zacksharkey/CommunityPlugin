@@ -36,24 +36,26 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.lblStatus = new System.Windows.Forms.Label();
+            this.lblBorrower = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // clbBuckets
             // 
             this.clbBuckets.FormattingEnabled = true;
-            this.clbBuckets.Location = new System.Drawing.Point(12, 37);
+            this.clbBuckets.Location = new System.Drawing.Point(12, 52);
             this.clbBuckets.Name = "clbBuckets";
-            this.clbBuckets.Size = new System.Drawing.Size(491, 409);
+            this.clbBuckets.Size = new System.Drawing.Size(491, 394);
             this.clbBuckets.TabIndex = 0;
             // 
             // btnNone
             // 
-            this.btnNone.Location = new System.Drawing.Point(12, 11);
+            this.btnNone.Location = new System.Drawing.Point(12, 23);
             this.btnNone.Name = "btnNone";
             this.btnNone.Size = new System.Drawing.Size(43, 23);
             this.btnNone.TabIndex = 2;
             this.btnNone.Text = "None";
             this.btnNone.UseVisualStyleBackColor = true;
+            this.btnNone.Click += new System.EventHandler(this.btnNone_Click);
             // 
             // btnCancel
             // 
@@ -63,6 +65,7 @@
             this.btnCancel.TabIndex = 3;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnTransfer
             // 
@@ -80,6 +83,7 @@
             this.txtLoanNumber.Name = "txtLoanNumber";
             this.txtLoanNumber.Size = new System.Drawing.Size(160, 20);
             this.txtLoanNumber.TabIndex = 5;
+            this.txtLoanNumber.TextChanged += new System.EventHandler(this.txtLoanNumber_TextChanged);
             // 
             // button1
             // 
@@ -109,11 +113,21 @@
             this.lblStatus.TabIndex = 8;
             this.lblStatus.Text = "Status:";
             // 
+            // lblBorrower
+            // 
+            this.lblBorrower.AutoSize = true;
+            this.lblBorrower.Location = new System.Drawing.Point(186, 36);
+            this.lblBorrower.Name = "lblBorrower";
+            this.lblBorrower.Size = new System.Drawing.Size(55, 13);
+            this.lblBorrower.TabIndex = 9;
+            this.lblBorrower.Text = "Borrower: ";
+            // 
             // eFolderTransferForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(510, 480);
+            this.Controls.Add(this.lblBorrower);
             this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
@@ -122,6 +136,8 @@
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnNone);
             this.Controls.Add(this.clbBuckets);
+            this.MaximumSize = new System.Drawing.Size(526, 519);
+            this.MinimumSize = new System.Drawing.Size(526, 519);
             this.Name = "eFolderTransferForm";
             this.Text = "eFolder Transfer";
             this.ResumeLayout(false);
@@ -139,5 +155,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblStatus;
+        private System.Windows.Forms.Label lblBorrower;
     }
 }
