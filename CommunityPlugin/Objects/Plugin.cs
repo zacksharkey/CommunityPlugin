@@ -212,11 +212,11 @@ namespace CommunityPlugin.Objects
         }
 
 
-        public virtual void BeforeCommit(object sender, EventArgs e)
+        public virtual void BeforeCommit(object sender, CancelableEventArgs e)
         {
             throw new ImplementationException(GetType().Name, nameof(IBeforeCommit), nameof(BeforeCommit));
         }
-        private void Base_BeforeCommit(object sender, EventArgs e)
+        private void Base_BeforeCommit(object sender, CancelableEventArgs e)
         {
             BeforeCommit(sender, e);
         }

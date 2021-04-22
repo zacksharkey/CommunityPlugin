@@ -130,7 +130,7 @@ namespace CommunityPlugin.Standard_Plugins.eFolder
             sl.Add("Fields.4002");
             LoanReportData data = EncompassApplication.Session.Reports.SelectReportingFieldsForLoan(guid, sl);
             if (data == null)
-                return;
+                return; 
 
             lblBorrower.Text = $"Borrower: {data["Fields.4000"]} {data["Fields.4002"]}";
         }

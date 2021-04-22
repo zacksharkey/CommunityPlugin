@@ -2,6 +2,7 @@
 using CommunityPlugin.Objects.Interface;
 using EllieMae.EMLite.DataEngine.Log;
 using EllieMae.EMLite.RemotingServices;
+using EllieMae.Encompass.Automation;
 using EllieMae.Encompass.BusinessObjects.Loans;
 using EllieMae.Encompass.BusinessObjects.Loans.Logging;
 using System;
@@ -41,6 +42,7 @@ namespace CommunityPlugin.Standard_Plugins
             //        doc.ShippingReadyDate = DateTime.Now;
             //    }
             //}
+
         }
     }
 }
