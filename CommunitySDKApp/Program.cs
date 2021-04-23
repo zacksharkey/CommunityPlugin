@@ -25,17 +25,17 @@ namespace CommunitySDKApp
 
         private static void Run()
         {
-            string instance = "TEBE11130625";
+            string instance = "";
             string uri = $"https://{instance}.ea.elliemae.net${instance}";
-            string user = "zsharkeylw";
-            string pass = "Instigate55#";
+            string user = "";
+            string pass = "";
 
 
             Session s = new Session();
             s.Start(uri, user, pass);
             EllieMae.EMLite.RemotingServices.Session.Start(uri, user, pass, "api.Encompass");
 
-            string guid = "{461c9eb5-612e-4df2-9f1f-dd79ed7d54a2}";
+            string guid = "";
             Loan current = s.Loans.Open(guid);
             if (current == null)
                 return;
