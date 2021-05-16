@@ -3,14 +3,6 @@
 
 ## Disclamer: This Plugin was created to use for free at your own risk. Always test this software in your test environment first.
 
-**Tutorials:**
-
-**The Framework Part 1** - https://youtu.be/9juibPIQZUg <br>
-**Installing the Plugin** - https://youtu.be/sA2pMGhBxeM <br>
-**Solutionizing Encompass** - https://youtu.be/vZD6_ufyQ1Y <br>
-**Finding Field Calculations** - https://youtu.be/8T9deHoDOjw <br>
-**Debugging your plugin** - https://youtu.be/4k5jkDpJVz0 <br>
-
 **Introduction:** This Plugin was built in an effort to help the community rapidly create ideas in Encompass. 
 
 **Settings:** The new Plugin Management Screen is where you will setup all of your plugin access rights
