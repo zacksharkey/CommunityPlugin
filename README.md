@@ -5,6 +5,10 @@
 
 **Introduction:** This Plugin was built in an effort to help the community rapidly create ideas in Encompass. 
 
+**Tutorials:** 
+Developing past the SDK https://www.youtube.com/watch?v=eDwdoq3rKOc
+Field Calculations https://www.youtube.com/watch?v=8T9deHoDOjw
+
 **Settings:** The new Plugin Management Screen is where you will setup all of your plugin access rights
 <img src="https://media-exp1.licdn.com/dms/image/C4E22AQHUm8v-2GTklQ/feedshare-shrink_2048_1536-alternative/0?e=1602115200&v=beta&t=d5buVutAPDerz2xOmSyBuL4okXsLMjLJxDPw00_jIUU"> <br>
 
