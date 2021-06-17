@@ -156,6 +156,7 @@
     <Reference Include="MainUI">
       <HintPath>..\..\..\..\..\..\SmartClientCache\Apps\UAC\Ellie Mae\xIHR5EqGa7zPnRG0YpD5z4TPAB0=\Encompass360\MainUI.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Web.Services2, Version=2.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -176,6 +177,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -202,6 +204,12 @@
     <Compile Include="Config\ExportServicePlugin_Config.Designer.cs">
       <DependentUpon>ExportServicePlugin_Config.cs</DependentUpon>
     </Compile>
+    <Compile Include="Config\RetrieveDocuments_Config.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Config\RetrieveDocuments_Config.Designer.cs">
+      <DependentUpon>RetrieveDocuments_Config.cs</DependentUpon>
+    </Compile>
     <Compile Include="Non Native Modifications\AlphaAlerts.cs" />
     <Compile Include="Non Native Modifications\BackAndForward.cs" />
     <Compile Include="Non Native Modifications\DisableServices.cs" />
@@ -222,6 +230,7 @@
     <Compile Include="Non Native Modifications\Pipeline\ShowColumnField.cs" />
     <Compile Include="Non Native Modifications\PrintFormToEfolder.cs" />
     <Compile Include="Non Native Modifications\RuleLock.cs" />
+    <Compile Include="Non Native Modifications\SantiagoGridExample.cs" />
     <Compile Include="Non Native Modifications\SideMenu\Controls\CustomLinkLabel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -329,6 +338,7 @@
     <Compile Include="Objects\CustomDataObjects\eFolderTransferCDO.cs" />
     <Compile Include="Objects\CustomDataObjects\ExportServiceConfig.cs" />
     <Compile Include="Objects\CustomDataObjects\LoanFolderRules.cs" />
+    <Compile Include="Objects\CustomDataObjects\RetrieveDocumentsCDO.cs" />
     <Compile Include="Objects\Enums\CDOType.cs" />
     <Compile Include="Objects\Enums\CloneBizRuleType.cs" />
     <Compile Include="Objects\Enums\CloneCondition.cs" />
@@ -343,6 +353,7 @@
     <Compile Include="Objects\Enums\SymmetricAlgorithmType.cs" />
     <Compile Include="Objects\Enums\TranslationType.cs" />
     <Compile Include="Objects\Enums\ValueType.cs" />
+    <Compile Include="Objects\Extension\EMExtension.cs" />
     <Compile Include="Objects\Extension\StringExtensions.cs" />
     <Compile Include="Objects\Extension\WindowsFormsExtensions.cs" />
     <Compile Include="Objects\Factories\EmailFactory.cs" />
@@ -502,6 +513,7 @@
     </Compile>
     <Compile Include="Standard Plugins\OpeneFolderDocument.cs" />
     <Compile Include="Standard Plugins\OpenInputForm.cs" />
+    <Compile Include="Standard Plugins\RetrieveDocuments.cs" />
     <Compile Include="Standard Plugins\VirtualFields.cs" />
   </ItemGroup>
   <ItemGroup />
@@ -511,6 +523,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Config\ExportServicePlugin_Config.resx">
       <DependentUpon>ExportServicePlugin_Config.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Config\RetrieveDocuments_Config.resx">
+      <DependentUpon>RetrieveDocuments_Config.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Non Native Modifications\Pipeline\ReassignmentDialog.resx">
       <DependentUpon>ReassignmentDialog.cs</DependentUpon>

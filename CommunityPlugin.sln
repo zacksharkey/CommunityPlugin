@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.29509.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommunityPlugin", "CommunityPlugin\CommunityPlugin.csproj", "{53BEE5EC-C6E7-43F9-B6EC-0366A3A372D7}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommunityFunction", "CommunityFunction\CommunityFunction.csproj", "{FB192CC4-4AA2-489B-A4A7-9BBF4CAE5545}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommunitySDKApp", "CommunitySDKApp\CommunitySDKApp.csproj", "{278C27E0-570E-47AA-8E6A-61A23386F9B2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{53BEE5EC-C6E7-43F9-B6EC-0366A3A372D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{53BEE5EC-C6E7-43F9-B6EC-0366A3A372D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{53BEE5EC-C6E7-43F9-B6EC-0366A3A372D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB192CC4-4AA2-489B-A4A7-9BBF4CAE5545}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB192CC4-4AA2-489B-A4A7-9BBF4CAE5545}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB192CC4-4AA2-489B-A4A7-9BBF4CAE5545}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB192CC4-4AA2-489B-A4A7-9BBF4CAE5545}.Release|Any CPU.Build.0 = Release|Any CPU
+		{278C27E0-570E-47AA-8E6A-61A23386F9B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{278C27E0-570E-47AA-8E6A-61A23386F9B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{278C27E0-570E-47AA-8E6A-61A23386F9B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{278C27E0-570E-47AA-8E6A-61A23386F9B2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -26,6 +26,14 @@ namespace CommunityPlugin.Non_Native_Modifications
         public override void Login(object sender, EventArgs e)
         {
             DoorBellItem = new ToolStripMenuItem("DoorBell");
+            GetPipeline();
+        }
+
+        private void GetPipeline()
+        {
+            Pipeline = FormWrapper.GetPipeline();
+            Pipeline.ContextMenuStrip.Opened -= ContextMenuStrip_Opened;
+            Pipeline.ContextMenuStrip.Opened += ContextMenuStrip_Opened;
         }
 
         public override void LoanClosing(object sender, EventArgs e)
@@ -40,8 +48,7 @@ namespace CommunityPlugin.Non_Native_Modifications
 
         public override void PipelineTabChanged(object sender, EventArgs e)
         {
-            Pipeline = FormWrapper.GetPipeline();
-            Pipeline.ContextMenuStrip.Opened += ContextMenuStrip_Opened;
+            GetPipeline();
         }
 
         private void ContextMenuStrip_Opened(object sender, EventArgs e)
