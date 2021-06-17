@@ -230,6 +230,7 @@
     <Compile Include="Non Native Modifications\Pipeline\ShowColumnField.cs" />
     <Compile Include="Non Native Modifications\PrintFormToEfolder.cs" />
     <Compile Include="Non Native Modifications\RuleLock.cs" />
+    <Compile Include="Non Native Modifications\SantiagoGridExample.cs" />
     <Compile Include="Non Native Modifications\SideMenu\Controls\CustomLinkLabel.cs">
       <SubType>Component</SubType>
     </Compile>

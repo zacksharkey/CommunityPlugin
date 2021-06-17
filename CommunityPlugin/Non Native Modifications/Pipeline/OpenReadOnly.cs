@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace CommunityPlugin.Non_Native_Modifications.Pipeline
 {
-    public class OpenReadOnly : Plugin, IPipelineTabChanged
+    public class OpenReadOnly : Plugin, IPipelineTabChanged, ILogin
     {
         private bool Added;
         private GridView PipelineGrid;
@@ -24,6 +24,11 @@ namespace CommunityPlugin.Non_Native_Modifications.Pipeline
             {
                 Logger.HandleError(ex, "OpenReadOnly");
             }
+        }
+        public override void Login(object sender, EventArgs e)
+        {
+            if (FormWrapper.IsPipelineTab)
+                AddOrRemoveContextItem();
         }
 
         private void AddOrRemoveContextItem()

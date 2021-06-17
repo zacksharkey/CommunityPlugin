@@ -17,6 +17,7 @@ namespace CommunityPlugin.Non_Native_Modifications
         public static Form EncompassForm => Application.OpenForms.Cast<Form>().FirstOrDefault();
 
         public static TabControl TabControl => EncompassForm.Controls.Find("tabControl", true)[0] as TabControl;
+        public static bool IsPipelineTab => TabControl.SelectedTab.Equals(TabControl.TabPages[1]);
 
         public static HashSet<Form> OpenForms;
 
