@@ -11,7 +11,7 @@ namespace CommunityPlugin.Config
         public RetrieveDocuments_Config()
         {
             InitializeComponent();
-            Config = CustomDataObject.Get<RetrieveDocumentsCDO>(RetrieveDocumentsCDO.Key);
+            Config = CustomDataObject.Get<RetrieveDocumentsCDO>();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -22,7 +22,7 @@ namespace CommunityPlugin.Config
         private void btnSave_Click(object sender, EventArgs e)
         {
             Config.FieldID = txtFieldID.Text;
-            CustomDataObject.Save<RetrieveDocumentsCDO>(RetrieveDocumentsCDO.Key, Config);
+            CustomDataObject.Save<RetrieveDocumentsCDO>(Config);
             this.Close();
         }
     }

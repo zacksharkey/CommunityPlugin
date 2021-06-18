@@ -38,9 +38,9 @@ namespace CommunityPlugin.Non_Native_Modifications
             });
 
 
-            RuleLockCDO cdo = CustomDataObject.Get<RuleLockCDO>(RuleLockCDO.Key);
+            RuleLockCDO cdo = CustomDataObject.Get<RuleLockCDO>();
             cdo.Rules.Add(info);
-            CustomDataObject.Save<RuleLockCDO>(RuleLockCDO.Key, cdo);
+            CustomDataObject.Save<RuleLockCDO>(cdo);
         }
 
         public override void NativeFormLoaded(object sender, FormOpenedArgs e)
@@ -49,7 +49,7 @@ namespace CommunityPlugin.Non_Native_Modifications
             if (openedForm == null || (openedForm.IsDisposed || !openedForm.Text.Contains("Trigger")))
                 return;
 
-            RuleLockCDO cdo = CustomDataObject.Get<RuleLockCDO>(RuleLockCDO.Key);
+            RuleLockCDO cdo = CustomDataObject.Get<RuleLockCDO>();
             int id = ((EllieMae.EMLite.Setup.TriggerEditor)openedForm.ActiveControl.TopLevelControl).Trigger.RuleID;
             RuleLockInfo locked = cdo.Rules?.FirstOrDefault(x => x.RuleID.Equals(id)) ?? (RuleLockInfo)null;
 

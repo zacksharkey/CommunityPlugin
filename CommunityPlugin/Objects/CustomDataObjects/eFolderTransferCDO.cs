@@ -4,8 +4,6 @@ namespace CommunityPlugin.Objects.CustomDataObjects
 {
     public class eFolderTransferCDO
     {
-        public static string Key = $"{nameof(eFolderTransferCDO)}.json";
-
         public List<eFolderTransferRule> Rules { get; set; }
 
         public eFolderTransferCDO()

@@ -33,7 +33,7 @@ namespace CommunityPlugin.Standard_Plugins
             }
 
             string folder = current.LoanFolder;
-            LoanFolderRules cdo = CustomDataObject.Get<LoanFolderRules>(LoanFolderRules.Key);
+            LoanFolderRules cdo = CustomDataObject.Get<LoanFolderRules>();
             List<LoanFolderRule> rules = cdo.Rules.OrderBy(x => x.Order).ToList();
             dgvProgress.DataSource = rules;
 

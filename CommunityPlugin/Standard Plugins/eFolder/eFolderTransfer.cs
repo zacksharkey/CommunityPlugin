@@ -20,7 +20,7 @@ namespace CommunityPlugin.Standard_Plugins.eFolder
 
         public override void Login(object sender, EventArgs e)
         {
-            CDO = CustomDataObject.Get<eFolderTransferCDO>(eFolderTransferCDO.Key);
+            CDO = CustomDataObject.Get<eFolderTransferCDO>();
         }
 
         public override void FormLoaded(object sender, FormChangeEventArgs e)

@@ -4,8 +4,6 @@ namespace CommunityPlugin.Objects.CustomDataObjects
 {
     public class ExportServiceConfigs
     {
-        public static string Key = $"{nameof(ExportServiceConfigs)}.json";
-
         public List<ExportServiceConfig> Configs { get; set; }
         public ExportServiceConfigs()
         {

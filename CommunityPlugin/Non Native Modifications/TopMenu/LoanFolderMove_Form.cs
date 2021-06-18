@@ -19,7 +19,7 @@ namespace CommunityPlugin.Non_Native_Modifications.TopMenu
          
         private void InitControls()
         {
-            CDO = CustomDataObject.Get<LoanFolderRules>(LoanFolderRules.Key);
+            CDO = CustomDataObject.Get<LoanFolderRules>();
             dgvFolders.Columns.Add("Loan Folder", "Loan Folder");
             foreach (string folder in EncompassHelper.GetFolders())
                 dgvFolders.Rows.Add(folder);
@@ -73,7 +73,7 @@ namespace CommunityPlugin.Non_Native_Modifications.TopMenu
                 current.Active = chkActive.Checked;
             }
 
-            CustomDataObject.Save<LoanFolderRules>(LoanFolderRules.Key, CDO);
+            CustomDataObject.Save<LoanFolderRules>(CDO);
             ClearFields();
         }
 

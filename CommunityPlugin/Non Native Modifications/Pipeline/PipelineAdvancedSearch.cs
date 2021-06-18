@@ -26,7 +26,7 @@ namespace CommunityPlugin.Non_Native_Modifications.Pipeline
 
         public override void PipelineTabChanged(object sender, EventArgs e)
         {
-            cdo = CustomDataObject.Get<PipelineFilterCDO>(PipelineFilterCDO.Key);
+            cdo = CustomDataObject.Get<PipelineFilterCDO>();
             if (cdo == null)
                 return;
 
@@ -112,7 +112,7 @@ namespace CommunityPlugin.Non_Native_Modifications.Pipeline
                 PipelineView = View.Text
             });
 
-            CustomDataObject.Save<PipelineFilterCDO>(PipelineFilterCDO.Key, cdo);
+            CustomDataObject.Save<PipelineFilterCDO>(cdo);
             LoadFilters(Filter);
             Filter.Text = string.Empty;
         }

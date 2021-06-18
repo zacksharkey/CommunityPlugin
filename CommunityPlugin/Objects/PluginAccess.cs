@@ -11,13 +11,13 @@ namespace CommunityPlugin.Objects
     {
         public static bool CheckAccess(string pluginName)
         {
-            CommunitySettings cdo = CustomDataObject.Get<CommunitySettings>(CommunitySettings.Key);
+            CommunitySettings cdo = CustomDataObject.Get<CommunitySettings>();
             List<PluginAccessRight> rights = cdo.Rights;
             if (rights.Count.Equals(0))
             {
                 rights.Add(new PluginAccessRight() { PluginName = nameof(TopMenuBase), AllAccess = true });
                 rights.Add(new PluginAccessRight() { PluginName = nameof(PluginManagement), AllAccess = true });
-                CustomDataObject.Save<CommunitySettings>(CommunitySettings.Key, cdo);
+                CustomDataObject.Save<CommunitySettings>(cdo);
             }
 
             PluginAccessRight right = rights.Where(x => x.PluginName.Equals(pluginName)).FirstOrDefault();

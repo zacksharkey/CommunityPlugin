@@ -15,7 +15,7 @@ namespace CommunityPlugin.Config
         public eFolderTransfer_Config(eFolderTransferCDO CDO)
         {
             InitializeComponent();
-            this.CDO = CDO != null ? CDO : CustomDataObject.Get<eFolderTransferCDO>(eFolderTransferCDO.Key);
+            this.CDO = CDO != null ? CDO : CustomDataObject.Get<eFolderTransferCDO>();
             cmbForms.Items.AddRange(Session.FormManager.GetFormInfos(InputFormType.Custom).OrderBy(x => x.Name).Select(x => x.Name).ToArray());
         }
 
@@ -36,7 +36,7 @@ namespace CommunityPlugin.Config
 
             rule.ControlID = txtControlID.Text;
             rule.FormName = cmbForms.Text;
-            CustomDataObject.Save<eFolderTransferCDO>(eFolderTransferCDO.Key, CDO);
+            CustomDataObject.Save<eFolderTransferCDO>(CDO);
 
             MessageBox.Show("Setting Saved");
         }

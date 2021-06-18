@@ -16,7 +16,7 @@ namespace CommunityPlugin.Config
         public ExportServicePlugin_Config()
         {
             InitializeComponent();
-            Config = CustomDataObject.Get<ExportServiceConfigs>(ExportServiceConfigs.Key);
+            Config = CustomDataObject.Get<ExportServiceConfigs>();
             cmbService.Items.AddRange(Enum.GetNames(typeof(GSEServiceType)));
             Forms = Session.FormManager.GetFormInfos(InputFormType.Custom);
             chkForms.Items.AddRange(Forms.OrderBy(x => x.Name).Select(x => x.Name).ToArray());
@@ -35,7 +35,7 @@ namespace CommunityPlugin.Config
             config.Forms = chkForms.CheckedItems.Cast<string>().ToList();
             config.ExportControlID = txtFieldID.Text;
             config.Service = cmbService.Text;
-            CustomDataObject.Save<ExportServiceConfigs>(ExportServiceConfigs.Key, Config);
+            CustomDataObject.Save<ExportServiceConfigs>(Config);
             MessageBox.Show("Changes Saved.");
             this.Close();
         }
@@ -50,7 +50,11 @@ namespace CommunityPlugin.Config
             if(config != null)
             {
                 foreach (var item in config.Forms)
-                    chkForms.SetItemChecked(chkForms.Items.IndexOf(item), true);
+                {
+                    int index = chkForms.Items.IndexOf(item);
+                    if( index > 0)
+                        chkForms.SetItemChecked(index, true);
+                }
 
                 txtFieldID.Text = config.ExportControlID;
             }

@@ -14,7 +14,7 @@ using System.Linq;
 
 namespace CommunityPlugin.Standard_Plugins
 {
-    public class ExportServicePlugin:Plugin, ILoanOpened, IFormLoaded
+    public class ExportServicePlugin:Plugin, ILogin, IFormLoaded
     {
         private ExportServiceConfigs Config;
         private List<ExportServiceConfig> CurrentConfigs;
@@ -24,10 +24,10 @@ namespace CommunityPlugin.Standard_Plugins
             form.ShowDialog();
         }
 
-        public override void LoanOpened(object sender, EventArgs e)
+        public override void Login(object sender, EventArgs e)
         {
-            Config = CustomDataObject.Get<ExportServiceConfigs>(ExportServiceConfigs.Key);
-        }
+            Config = CustomDataObject.Get<ExportServiceConfigs>();
+        } 
 
         public override void FormLoaded(object sender, FormChangeEventArgs e)
         {

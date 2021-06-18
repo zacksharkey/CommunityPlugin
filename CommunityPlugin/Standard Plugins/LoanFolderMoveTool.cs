@@ -26,7 +26,7 @@ namespace CommunityPlugin.Standard_Plugins
         {
             Loan l = EncompassHelper.CurrentLoan;
             string folder = l.LoanFolder;
-            LoanFolderRules rules = CustomDataObject.Get<LoanFolderRules>(LoanFolderRules.Key);
+            LoanFolderRules rules = CustomDataObject.Get<LoanFolderRules>();
 
             foreach (LoanFolderRule rule in rules.Rules.Where(x => x.Active && !x.FolderName.Equals(folder)).OrderBy(x => x.Order))
             {
