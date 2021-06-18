@@ -28,9 +28,9 @@ namespace CommunityPlugin.Non_Native_Modifications.SideMenu.UserControls
         public LinksAndResources()
         {
             RefreshControl();
-            CommunitySettings cdo = CustomDataObject.Get<CommunitySettings>(CommunitySettings.Key);
+            CommunitySettings cdo = CustomDataObject.Get<CommunitySettings>();
             var rights = cdo.Rights;
-            CustomDataObject.Save<CommunitySettings>(CommunitySettings.Key, cdo);
+            CustomDataObject.Save<CommunitySettings>(cdo);
 
             //Links = cdo.Links == null || cdo.Links.Count.Equals(0) ? new Dictionary<string, Dictionary<string, string>>() : cdo.Links.ContainsKey(EncompassHelper.LastPersona) ? cdo.Links[EncompassHelper.LastPersona] : cdo.Links["Default"];
         }

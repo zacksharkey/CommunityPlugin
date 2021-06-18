@@ -18,7 +18,7 @@ namespace CommunityPlugin.Non_Native_Modifications.TopMenu
     public partial class AutoMailer_Form : Form
     {
         private string TriggerName;
-        AutoMailerCDO CDO = CustomDataObject.Get<AutoMailerCDO>(AutoMailerCDO.Key);
+        AutoMailerCDO CDO = CustomDataObject.Get<AutoMailerCDO>();
         public AutoMailer_Form()
         {
             InitializeComponent();
@@ -112,7 +112,7 @@ namespace CommunityPlugin.Non_Native_Modifications.TopMenu
             if (!update)
                 CDO.Triggers.Add(trigger);
 
-            CustomDataObject.Save<AutoMailerCDO>(AutoMailerCDO.Key, CDO);
+            CustomDataObject.Save<AutoMailerCDO>(CDO);
 
             SetupControls();
         }
@@ -125,7 +125,7 @@ namespace CommunityPlugin.Non_Native_Modifications.TopMenu
                 MailTrigger newTrigger = trigger.Clone(trigger);
                 CDO.Triggers.Add(newTrigger);
 
-                CustomDataObject.Save<AutoMailerCDO>(AutoMailerCDO.Key, CDO);
+                CustomDataObject.Save<AutoMailerCDO>(CDO);
                 SetupControls();
             }
         }
@@ -138,7 +138,7 @@ namespace CommunityPlugin.Non_Native_Modifications.TopMenu
                 MailTrigger trigger = CDO.Triggers.Where(x => x.Name.Equals(TriggerName)).FirstOrDefault();
                 CDO.Triggers.Remove(trigger);
 
-                CustomDataObject.Save<AutoMailerCDO>(AutoMailerCDO.Key, CDO);
+                CustomDataObject.Save<AutoMailerCDO>(CDO);
                 SetupControls();
             }
         }

@@ -5,7 +5,6 @@ namespace CommunityPlugin.Objects.Helpers
 {
     public class AutoMailerCDO
     {
-        public static string Key = $"{nameof(AutoMailerCDO)}.json";
         public List<MailTrigger> Triggers { get; set; }
 
         public AutoMailerCDO()

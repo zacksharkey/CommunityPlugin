@@ -39,7 +39,7 @@ namespace CommunityPlugin.Non_Native_Modifications
 
         private void GridView_ItemDoubleClick(object source, GVItemEventArgs e)
         {
-            VIPCDO cdo = CustomDataObject.Get<VIPCDO>(VIPCDO.Key);
+            VIPCDO cdo = CustomDataObject.Get<VIPCDO>();
 
             if (cdo.Loans.Contains(EncompassApplication.CurrentLoan.Guid))
             {
@@ -62,7 +62,7 @@ namespace CommunityPlugin.Non_Native_Modifications
             ToolStripItem vip = menu.Items.Cast<ToolStripItem>().Where(x => x.Text.Contains(nameof(VIP))).FirstOrDefault();
             if (vip != null)
             {
-                VIPCDO cdo = CustomDataObject.Get<VIPCDO>(VIPCDO.Key);
+                VIPCDO cdo = CustomDataObject.Get<VIPCDO>();
                 GVItem selected = FormWrapper.GetPipeline().SelectedItems.FirstOrDefault();
                 vip.Text = "Mark As VIP";
 
@@ -81,7 +81,7 @@ namespace CommunityPlugin.Non_Native_Modifications
         private void Item_Click(object sender, EventArgs e)
         {
             GridView gridView = FormWrapper.GetPipeline();
-            VIPCDO cdo = CustomDataObject.Get<VIPCDO>(VIPCDO.Key);
+            VIPCDO cdo = CustomDataObject.Get<VIPCDO>();
             string guid = (gridView.SelectedItems.FirstOrDefault().Tag as PipelineInfo).GUID;
             if (cdo.Loans.Contains(guid))
                 cdo.Loans.Remove(guid);
@@ -89,7 +89,7 @@ namespace CommunityPlugin.Non_Native_Modifications
                 cdo.Loans.Add(guid);
 
 
-            CustomDataObject.Save<VIPCDO>(VIPCDO.Key, cdo);
+            CustomDataObject.Save<VIPCDO>(cdo);
         }
     }
 }

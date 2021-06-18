@@ -22,7 +22,7 @@ namespace CommunityPlugin.Objects.Factories
     {
         public List<ITask> GetTriggers()
         {
-            AutoMailerCDO cdo = CustomDataObject.Get<AutoMailerCDO>(AutoMailerCDO.Key);
+            AutoMailerCDO cdo = CustomDataObject.Get<AutoMailerCDO>();
             List<MailTrigger> Triggers = cdo.Triggers; 
 
             List<ITask> result = new List<ITask>();

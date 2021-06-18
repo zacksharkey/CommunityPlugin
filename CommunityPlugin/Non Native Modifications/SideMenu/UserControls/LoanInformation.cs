@@ -31,7 +31,7 @@ namespace CommunityPlugin.Non_Native_Modifications.SideMenu.UserControls
         public LoanInformation()
         {
             InitializeComponent();
-            CommunitySettings cdo = CustomDataObject.Get<CommunitySettings>(CommunitySettings.Key);
+            CommunitySettings cdo = CustomDataObject.Get<CommunitySettings>();
             //Fields = cdo.LoanInformation == null  || cdo.LoanInformation.Count.Equals(0) ? new Dictionary<string, string>() : cdo.LoanInformation.ContainsKey(EncompassHelper.LastPersona) ? cdo.LoanInformation[EncompassHelper.LastPersona] : cdo.LoanInformation["Default"];
             RefreshInfo();
         }

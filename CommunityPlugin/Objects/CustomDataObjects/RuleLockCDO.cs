@@ -5,8 +5,6 @@ namespace CommunityPlugin.Objects.CustomDataObjects
 {
     public class RuleLockCDO
     {
-        public static string Key = "RuleLockSettings.json";
-
         public List<RuleLockInfo> Rules { get; set; }
         public RuleLockCDO()
         {

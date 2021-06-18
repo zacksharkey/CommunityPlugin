@@ -28,7 +28,7 @@ namespace CommunityPlugin.Standard_Plugins
         }
         public override void LoanOpened(object sender, EventArgs e)
         {
-            Config = CustomDataObject.Get<RetrieveDocumentsCDO>(RetrieveDocumentsCDO.Key);
+            Config = CustomDataObject.Get<RetrieveDocumentsCDO>();
         }
 
         public override void BeforeCommit(object sender, CancelableEventArgs e)
