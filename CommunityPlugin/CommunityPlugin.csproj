@@ -515,6 +515,7 @@
     <Compile Include="Standard Plugins\OpenInputForm.cs" />
     <Compile Include="Standard Plugins\RetrieveDocuments.cs" />
     <Compile Include="Standard Plugins\VirtualFields.cs" />
+    <Compile Include="Standard Plugins\WelcomePageForm.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
